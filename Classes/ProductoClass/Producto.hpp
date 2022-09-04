@@ -32,7 +32,6 @@ public:
     void setDescripcion(string descripcion);
     void setPrecioCompra(string precioCompra);
     void setPrecioVenta(string precioVenta);
-
 };
 
 #endif // PRODUCTO_HPP

@@ -72,7 +72,6 @@ void Producto::Mostrar()
         getline(archivo, precioVenta, ',');
         getline(archivo, precioCompra, ',');
         getline(archivo, descripcion);
-        Producto producto(codigo, codigoProvedor, precioVenta, precioCompra, descripcion);
         cout << left << endl;
         cout << setw(15) << "Codigo";
         cout << setw(20) << "Codigo Provedor";
@@ -117,7 +116,6 @@ void Producto::Buscar(string productoBuscado)
         if (codigo == productoBuscado)
         {
             cont++;
-            Producto producto(codigo, codigoProvedor, precioVenta, precioCompra, descripcion);
             cout << left << endl;
             cout << "-----------------------------------------------------------------" << endl;
             cout << setw(15) << "Codigo";
