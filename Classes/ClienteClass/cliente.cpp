@@ -109,14 +109,6 @@ void Cliente::Mostrar()
         archivo.read((char *)&IDVehiculoSize, sizeof(int));
         IDVehiculo.resize(IDVehiculoSize);
         archivo.read((char *)&IDVehiculo[0], IDVehiculoSize);
-        // getline(archivo, ID, '\0');
-        // getline(archivo, nombre, '\0');
-        // if (archivo.eof())
-        //     break;
-        // getline(archivo, apellido, '\0');
-        // getline(archivo, correo, '\0');
-        // getline(archivo, numeroCelular, '\0');
-        // getline(archivo, IDVehiculo, '\0');
         cout << left << endl;
         cout << setw(10) << "ID";
         cout << setw(10) << "Nombre";
@@ -141,6 +133,7 @@ void Cliente::Buscar(string ClienteBuscado)
     string ID, nombre, apellido, correo, numeroCelular, IDVehiculo;
     ifstream archivo("Clientes.txt");
     int cont = 0;
+    int IDsize = 0, nombreSize = 0, apellidoSize = 0, correoSize = 0, numeroCelularSize = 0, IDVehiculoSize = 0;
     Cliente Cliente;
 
     if (archivo.fail())
@@ -153,14 +146,31 @@ void Cliente::Buscar(string ClienteBuscado)
 
     while (true)
     {
-        getline(archivo, ID, '\0');
-        getline(archivo, nombre, '\0');
-        if (archivo.eof())
-            break;
-        getline(archivo, apellido, '\0');
-        getline(archivo, correo, '\0');
-        getline(archivo, numeroCelular, '\0');
-        getline(archivo, IDVehiculo, '\0');
+        archivo.read((char *)&IDsize, sizeof(int));
+        ID.resize(IDsize);
+        archivo.read((char *)&ID[0], IDsize);
+
+        if (archivo.eof()) break;
+
+        archivo.read((char *)&nombreSize, sizeof(int));
+        nombre.resize(nombreSize);
+        archivo.read((char *)&nombre[0], nombreSize);
+
+        archivo.read((char *)&apellidoSize, sizeof(int));
+        apellido.resize(apellidoSize);
+        archivo.read((char *)&apellido[0], apellidoSize);
+
+        archivo.read((char *)&correoSize, sizeof(int));
+        correo.resize(correoSize);
+        archivo.read((char *)&correo[0], correoSize);
+
+        archivo.read((char *)&numeroCelularSize, sizeof(int));
+        numeroCelular.resize(numeroCelularSize);
+        archivo.read((char *)&numeroCelular[0], numeroCelularSize);
+
+        archivo.read((char *)&IDVehiculoSize, sizeof(int));
+        IDVehiculo.resize(IDVehiculoSize);
+        archivo.read((char *)&IDVehiculo[0], IDVehiculoSize);
         if (ID == ClienteBuscado)
         {
             cont++;
@@ -197,6 +207,7 @@ void Cliente::Modificar(string ClienteBuscado)
     int opc;
     string newValue;
     string ID, nombre, apellido, correo, numeroCelular, IDVehiculo;
+    int IDsize = 0, nombreSize = 0, apellidoSize = 0, correoSize = 0, numeroCelularSize = 0, IDVehiculoSize = 0;
     Cliente Cliente;
 
     if (archivo.fail())
@@ -209,14 +220,32 @@ void Cliente::Modificar(string ClienteBuscado)
 
     while (true)
     {
-        getline(archivo, ID, '\0');
-        getline(archivo, nombre, '\0');
-        if (archivo.eof())
-            break;
-        getline(archivo, apellido, '\0');
-        getline(archivo, correo, '\0');
-        getline(archivo, numeroCelular, '\0');
-        getline(archivo, IDVehiculo, '\0');
+        archivo.read((char *)&IDsize, sizeof(int));
+        ID.resize(IDsize);
+        archivo.read((char *)&ID[0], IDsize);
+
+        if (archivo.eof()) break;
+
+        archivo.read((char *)&nombreSize, sizeof(int));
+        nombre.resize(nombreSize);
+        archivo.read((char *)&nombre[0], nombreSize);
+
+        archivo.read((char *)&apellidoSize, sizeof(int));
+        apellido.resize(apellidoSize);
+        archivo.read((char *)&apellido[0], apellidoSize);
+
+        archivo.read((char *)&correoSize, sizeof(int));
+        correo.resize(correoSize);
+        archivo.read((char *)&correo[0], correoSize);
+
+        archivo.read((char *)&numeroCelularSize, sizeof(int));
+        numeroCelular.resize(numeroCelularSize);
+        archivo.read((char *)&numeroCelular[0], numeroCelularSize);
+
+        archivo.read((char *)&IDVehiculoSize, sizeof(int));
+        IDVehiculo.resize(IDVehiculoSize);
+        archivo.read((char *)&IDVehiculo[0], IDVehiculoSize);
+
         if (ID == ClienteBuscado)
         {
             cont++;
@@ -251,36 +280,42 @@ void Cliente::Modificar(string ClienteBuscado)
                 cout << "ID" << endl;
                 cout << "Introduce el nuevo ID del Cliente" << endl;
                 getline(cin, ID);
+                IDsize = ID.size();
                 break;
 
             case 2:
                 cout << "Nombre" << endl;
                 cout << "Introduce el nuevo Nombre del Cliente" << endl;
                 getline(cin, nombre);
+                nombreSize = nombre.size();
                 break;
 
             case 3:
                 cout << "Apellido" << endl;
                 cout << "Introduce el nuevo Apellido del Cliente" << endl;
                 getline(cin, apellido);
+                apellidoSize = apellido.size();
                 break;
 
             case 4:
                 cout << "Correo" << endl;
                 cout << "Introduce el nuevo Correo del Cliente" << endl;
                 getline(cin, correo);
+                correoSize = correo.size();
                 break;
 
             case 5:
                 cout << "Celular" << endl;
                 cout << "Introduce el nuevo Celular del Cliente" << endl;
                 getline(cin, numeroCelular);
+                numeroCelularSize = numeroCelular.size();
                 break;
 
             case 6:
                 cout << "IDVehiculo" << endl;
                 cout << "Introduce el nuevo ID del Vehiculo" << endl;
                 getline(cin, IDVehiculo);
+                IDVehiculoSize = IDVehiculo.size();
                 break;
 
             default:
@@ -288,23 +323,23 @@ void Cliente::Modificar(string ClienteBuscado)
                 break;
             }
         }
-        archivoTemporal.write(ID.data(), ID.size());
-        archivoTemporal.write("\0", sizeof(char));
+        archivoTemporal.write((char *)&IDsize, sizeof(int));
+        archivoTemporal.write(ID.c_str(), IDsize);
 
-        archivoTemporal.write(nombre.data(), nombre.size());
-        archivoTemporal.write("\0", sizeof(char));
+        archivoTemporal.write((char *)&nombreSize, sizeof(int));
+        archivoTemporal.write(nombre.c_str(), nombreSize);
 
-        archivoTemporal.write(apellido.data(), apellido.size());
-        archivoTemporal.write("\0", sizeof(char));
+        archivoTemporal.write((char *)&apellidoSize, sizeof(int));
+        archivoTemporal.write(apellido.c_str(), apellidoSize);
 
-        archivoTemporal.write(correo.data(), correo.size());
-        archivoTemporal.write("\0", sizeof(char));
+        archivoTemporal.write((char *)&correoSize, sizeof(int));
+        archivoTemporal.write(correo.c_str(), correoSize);
 
-        archivoTemporal.write(numeroCelular.data(), numeroCelular.size());
-        archivoTemporal.write("\0", sizeof(char));
+        archivoTemporal.write((char *)&numeroCelularSize, sizeof(int));
+        archivoTemporal.write(numeroCelular.c_str(), numeroCelularSize);
 
-        archivoTemporal.write(IDVehiculo.data(), IDVehiculo.size());
-        archivoTemporal.write("\0", sizeof(char));
+        archivoTemporal.write((char *)&IDVehiculoSize, sizeof(int));
+        archivoTemporal.write(IDVehiculo.c_str(), IDVehiculoSize);
     }
 
     if (cont == 0)
@@ -326,7 +361,7 @@ void Cliente::Eliminar(string ClienteBuscado)
     ofstream archivoTemporal("ClientesTemp.txt", ios::app);
     int cont = 0;
     int opc;
-    string newValue;
+    int IDsize = 0, nombreSize = 0, apellidoSize = 0, correoSize = 0, numeroCelularSize = 0, IDVehiculoSize = 0;
     string ID, nombre, apellido, correo, numeroCelular, IDVehiculo;
 
     if (archivo.fail())
@@ -339,14 +374,31 @@ void Cliente::Eliminar(string ClienteBuscado)
 
     while (true)
     {
-        getline(archivo, ID, '\0');
-        getline(archivo, nombre, '\0');
-        if (archivo.eof())
-            break;
-        getline(archivo, apellido, '\0');
-        getline(archivo, correo, '\0');
-        getline(archivo, numeroCelular, '\0');
-        getline(archivo, IDVehiculo, '\0');
+        archivo.read((char *)&IDsize, sizeof(int));
+        ID.resize(IDsize);
+        archivo.read((char *)&ID[0], IDsize);
+
+        if (archivo.eof()) break;
+
+        archivo.read((char *)&nombreSize, sizeof(int));
+        nombre.resize(nombreSize);
+        archivo.read((char *)&nombre[0], nombreSize);
+
+        archivo.read((char *)&apellidoSize, sizeof(int));
+        apellido.resize(apellidoSize);
+        archivo.read((char *)&apellido[0], apellidoSize);
+
+        archivo.read((char *)&correoSize, sizeof(int));
+        correo.resize(correoSize);
+        archivo.read((char *)&correo[0], correoSize);
+
+        archivo.read((char *)&numeroCelularSize, sizeof(int));
+        numeroCelular.resize(numeroCelularSize);
+        archivo.read((char *)&numeroCelular[0], numeroCelularSize);
+
+        archivo.read((char *)&IDVehiculoSize, sizeof(int));
+        IDVehiculo.resize(IDVehiculoSize);
+        archivo.read((char *)&IDVehiculo[0], IDVehiculoSize);
 
         if (ID == ClienteBuscado)
         {
@@ -392,23 +444,23 @@ void Cliente::Eliminar(string ClienteBuscado)
 
         if (ID != ClienteBuscado)
         {
-            archivoTemporal.write(ID.data(), ID.size());
-            archivoTemporal.write("\0", sizeof(char));
+            archivoTemporal.write((char *)&IDsize, sizeof(int));
+            archivoTemporal.write(ID.c_str(), IDsize);
 
-            archivoTemporal.write(nombre.data(), nombre.size());
-            archivoTemporal.write("\0", sizeof(char));
+            archivoTemporal.write((char *)&nombreSize, sizeof(int));
+            archivoTemporal.write(nombre.c_str(), nombreSize);
 
-            archivoTemporal.write(apellido.data(), apellido.size());
-            archivoTemporal.write("\0", sizeof(char));
+            archivoTemporal.write((char *)&apellidoSize, sizeof(int));
+            archivoTemporal.write(apellido.c_str(), apellidoSize);
 
-            archivoTemporal.write(correo.data(), correo.size());
-            archivoTemporal.write("\0", sizeof(char));
+            archivoTemporal.write((char *)&correoSize, sizeof(int));
+            archivoTemporal.write(correo.c_str(), correoSize);
 
-            archivoTemporal.write(numeroCelular.data(), numeroCelular.size());
-            archivoTemporal.write("\0", sizeof(char));
+            archivoTemporal.write((char *)&numeroCelularSize, sizeof(int));
+            archivoTemporal.write(numeroCelular.c_str(), numeroCelularSize);
 
-            archivoTemporal.write(IDVehiculo.data(), IDVehiculo.size());
-            archivoTemporal.write("\0", sizeof(char));
+            archivoTemporal.write((char *)&IDVehiculoSize, sizeof(int));
+            archivoTemporal.write(IDVehiculo.c_str(), IDVehiculoSize);
         }
     }
 
