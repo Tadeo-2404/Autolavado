@@ -47,24 +47,25 @@ void Cliente::Crear()
 
     cout << "Ingrese el ID del Vehiculo" << endl;
     getline(cin, IDVehiculo);
+    int IDsize = ID.size(), nombreSize = nombre.size(), apellidoSize = apellido.size(), correoSize = correo.size(), numeroCelularSize = numeroCelular.size(), IDVehiculoSize = IDVehiculo.size();
 
-    archivoClientes.write(ID.data(), ID.size());
-    archivoClientes.write("\0", sizeof(char));
+    archivoClientes.write((char*)&IDsize, sizeof(int));
+    archivoClientes.write(ID.c_str(), IDsize);
 
-    archivoClientes.write(nombre.data(), nombre.size());
-    archivoClientes.write("\0", sizeof(char));
+    archivoClientes.write((char*)&nombreSize, sizeof(int));
+    archivoClientes.write(nombre.c_str(), nombreSize);
 
-    archivoClientes.write(apellido.data(), apellido.size());
-    archivoClientes.write("\0", sizeof(char));
+    archivoClientes.write((char*)&apellidoSize, sizeof(int));
+    archivoClientes.write(apellido.c_str(), apellidoSize);
 
-    archivoClientes.write(correo.data(), correo.size());
-    archivoClientes.write("\0", sizeof(char));
+    archivoClientes.write((char*)&correoSize, sizeof(int));
+    archivoClientes.write(correo.c_str(), correoSize);
 
-    archivoClientes.write(numeroCelular.data(), numeroCelular.size());
-    archivoClientes.write("\0", sizeof(char));
+    archivoClientes.write((char*)&numeroCelularSize, sizeof(int));
+    archivoClientes.write(numeroCelular.c_str(), numeroCelularSize);
 
-    archivoClientes.write(IDVehiculo.data(), IDVehiculo.size());
-    archivoClientes.write("\0", sizeof(char));
+    archivoClientes.write((char*)&IDVehiculoSize, sizeof(int));
+    archivoClientes.write(IDVehiculo.c_str(), IDVehiculoSize);
 
     archivoClientes.close();
 };
@@ -72,7 +73,8 @@ void Cliente::Crear()
 void Cliente::Mostrar()
 {
     string ID, nombre, apellido, correo, numeroCelular, IDVehiculo;
-    ifstream archivo("Clientes.txt");
+    int IDsize = 0, nombreSize = 0, apellidoSize = 0, correoSize = 0, numeroCelularSize = 0, IDVehiculoSize = 0;
+    ifstream archivo("Clientes.txt", ios::app);
 
     if (archivo.fail())
     {
@@ -82,14 +84,39 @@ void Cliente::Mostrar()
 
     while (true)
     {
-        getline(archivo, ID, '\0');
-        getline(archivo, nombre, '\0');
-        if (archivo.eof())
-            break;
-        getline(archivo, apellido, '\0');
-        getline(archivo, correo, '\0');
-        getline(archivo, numeroCelular, '\0');
-        getline(archivo, IDVehiculo, '\0');
+        archivo.read((char *)&IDsize, sizeof(int));
+        ID.resize(IDsize);
+        archivo.read((char *)&ID[0], IDsize);
+
+        if (archivo.eof()) break;
+
+        archivo.read((char *)&nombreSize, sizeof(int));
+        nombre.resize(nombreSize);
+        archivo.read((char *)&nombre[0], nombreSize);
+
+        archivo.read((char *)&apellidoSize, sizeof(int));
+        apellido.resize(apellidoSize);
+        archivo.read((char *)&apellido[0], apellidoSize);
+
+        archivo.read((char *)&correoSize, sizeof(int));
+        correo.resize(correoSize);
+        archivo.read((char *)&correo[0], correoSize);
+
+        archivo.read((char *)&numeroCelularSize, sizeof(int));
+        numeroCelular.resize(numeroCelularSize);
+        archivo.read((char *)&numeroCelular[0], numeroCelularSize);
+
+        archivo.read((char *)&IDVehiculoSize, sizeof(int));
+        IDVehiculo.resize(IDVehiculoSize);
+        archivo.read((char *)&IDVehiculo[0], IDVehiculoSize);
+        // getline(archivo, ID, '\0');
+        // getline(archivo, nombre, '\0');
+        // if (archivo.eof())
+        //     break;
+        // getline(archivo, apellido, '\0');
+        // getline(archivo, correo, '\0');
+        // getline(archivo, numeroCelular, '\0');
+        // getline(archivo, IDVehiculo, '\0');
         cout << left << endl;
         cout << setw(10) << "ID";
         cout << setw(10) << "Nombre";
