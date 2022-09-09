@@ -69,21 +69,22 @@ void Admin::eliminarProductos(string ID) {
 
 //TICKET
 void Admin::crearTicket() {
-    ticket.Crear(this->ticketAdmin);
+    this->contTicket++;
+    ticket.Crear(this->ticketAdmin, this->contTicket);
 }
 
 void Admin::mostrarTickets() {
     ticket.Mostrar(this->ticketAdmin);
 }
 
-void Admin::buscarTickets(string ID) {
-    ticket.Buscar(ID);
+void Admin::buscarTickets(int ID) {
+    ticket.Buscar(this->ticketAdmin ,ID);
 }
 
-void Admin::modificarTickets(string ID) {
-    ticket.Modificar(ID);
+void Admin::modificarTickets(int ID) {
+    ticket.Modificar(this->ticketAdmin ,ID);
 }
 
-void Admin::eliminarTickets(string ID) {
-    ticket.Eliminar(ID);
+void Admin::eliminarTickets(int ID) {
+    ticket.Eliminar(this->ticketAdmin ,ID);
 }
