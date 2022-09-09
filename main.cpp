@@ -12,8 +12,9 @@ int main()
         cout << "AUTOLAVADO" << endl;
         cout << "1) Producto" << endl;
         cout << "2) Cliente" << endl;
+        cout << "3) Ticket" << endl;
         cout << "0) Salir" <<endl;
-        cin >> opc;
+        cin>>opc;
         cin.ignore();
 
         switch (opc)
@@ -29,6 +30,13 @@ int main()
         {
             cout << "Cliente" << endl;
             menu.MenuCliente();
+            break;
+        }
+
+        case 3:
+        {
+            cout << "Ticket" << endl;
+            menu.MenuTicket();
             break;
         }
 

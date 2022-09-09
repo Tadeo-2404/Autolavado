@@ -10,8 +10,8 @@ class Ticket {
 public:
    Ticket();
    Ticket(string IDAuto, string IDCliente, string IDServicio);
-    void Crear();
-    void Mostrar();
+    void Crear(Ticket &ticket);
+    void Mostrar(Ticket &ticket);
     void Buscar(string codigo);
     void Eliminar(string codigo);
     void Modificar(string codigo);
