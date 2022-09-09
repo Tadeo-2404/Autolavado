@@ -4,20 +4,24 @@
 using namespace std;
 
 class Ticket {
+    int ID;
+    int cont;
     string IDAuto;
     string IDCliente;
     string IDServicio;
 public:
    Ticket();
-   Ticket(string IDAuto, string IDCliente, string IDServicio);
-    void Crear(Ticket &ticket);
+   Ticket(int ID,string IDAuto, string IDCliente, string IDServicio);
+    void Crear(Ticket &ticket, int ID);
     void Mostrar(Ticket &ticket);
-    void Buscar(string codigo);
-    void Eliminar(string codigo);
-    void Modificar(string codigo);
+    void Buscar(Ticket &ticket ,int codigo);
+    void Eliminar(Ticket &ticket ,int codigo);
+    void Modificar(Ticket &ticket ,int codigo);
+    int getID();
    string getIDAuto();
    string getIDCliente();
    string getIDServicio();
+   void setID(int ID);
    void setIDAuto(string IDAuto);
    void setIDCliente(string IDCliente);
    void setIDServicio(string IDServicio);

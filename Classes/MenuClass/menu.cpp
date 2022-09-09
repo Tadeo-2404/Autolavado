@@ -183,30 +183,30 @@ void Menu::MenuTicket()
 
         case 3:
         {
-            string IDticket;
+            int IDticket;
             cout << "BUSCAR" << endl;
             cout << "Introduce el ID del ticket a buscar" <<endl;
-            getline(cin, IDticket);
+            cin>>IDticket;
             admin.buscarTickets(IDticket);
             break;
         }
 
         case 4:
         {
-            string IDticket;
+            int IDticket;
             cout << "ELIMINAR" << endl;
             cout << "Introduce el ID del ticket a eliminar" <<endl;
-            getline(cin, IDticket);
+            cin>>IDticket;
             admin.eliminarTickets(IDticket);
             break;
         }
 
         case 5:
         {
-            string IDticket;
+            int IDticket;
             cout << "MODIFICAR" << endl;
             cout << "Introduce el ID del ticket a modificar" <<endl;
-            getline(cin, IDticket);
+            cin>>IDticket;
             admin.modificarTickets(IDticket);
             break;
         }
