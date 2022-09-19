@@ -218,3 +218,73 @@ void Menu::MenuTicket()
 
     } while (opc != 0);
 }
+
+void Menu::MenuEmpleado()
+{
+        Admin admin;
+    int opc;
+    do
+    {
+        cout << "Ticket" << endl;
+        cout << "1) Crear" << endl;
+        cout << "2) Mostrar" << endl;
+        cout << "3) Buscar" << endl;
+        cout << "4) Eliminar" << endl;
+        cout << "5) Modificar" << endl;
+        cout << "0) Salir" <<endl;
+        cin >> opc;
+        cin.ignore();
+
+        switch (opc)
+        {
+        case 1:
+        {
+            cout << "CREAR" << endl;
+            admin.crearTicket();
+            break;
+        }
+
+        case 2:
+        {
+            cout << "MOSTRAR" << endl;
+            admin.mostrarTickets();
+            break;
+        }
+
+        case 3:
+        {
+            int IDticket;
+            cout << "BUSCAR" << endl;
+            cout << "Introduce el ID del ticket a buscar" <<endl;
+            cin>>IDticket;
+            admin.buscarTickets(IDticket);
+            break;
+        }
+
+        case 4:
+        {
+            int IDticket;
+            cout << "ELIMINAR" << endl;
+            cout << "Introduce el ID del ticket a eliminar" <<endl;
+            cin>>IDticket;
+            admin.eliminarTickets(IDticket);
+            break;
+        }
+
+        case 5:
+        {
+            int IDticket;
+            cout << "MODIFICAR" << endl;
+            cout << "Introduce el ID del ticket a modificar" <<endl;
+            cin>>IDticket;
+            admin.modificarTickets(IDticket);
+            break;
+        }
+
+        default:
+            cout << "Error: Opcion no valida, intentalo de nuevo" << endl;
+            break;
+        }
+
+    } while (opc != 0);
+}

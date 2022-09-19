@@ -3,13 +3,16 @@
 #include "../ClienteClass/Cliente.hpp"
 #include "../ProductoClass/Producto.hpp"
 #include "../TicketClass/Ticket.hpp"
+#include "../EmpleadoClass/Empleado.hpp"
 #include "../ClienteClass/cliente.cpp"
 #include "../ProductoClass/producto.cpp"
 #include "../TicketClass/Ticket.cpp"
+#include "../EmpleadoClass/Empleado.cpp"
 using namespace std;
 Cliente cliente;
 Producto producto;
 Ticket ticket;
+Empleado empleado;
 
 //CONSTRUCTOR
 Admin::Admin()
@@ -87,4 +90,26 @@ void Admin::modificarTickets(int ID) {
 
 void Admin::eliminarTickets(int ID) {
     ticket.Eliminar(this->ticketAdmin ,ID);
+}
+
+//EMPLEADO
+void Admin::crearEmpleado() {
+    this->contEmpleado++;
+    empleado.Crear(this->empleadoAdmin, this->contEmpleado);
+}
+
+void Admin::mostrarEmpleados() {
+    empleado.Mostrar(this->empleadoAdmin);
+}
+
+void Admin::buscarEmpleados(int ID) {
+    empleado.Buscar(this->empleadoAdmin ,ID);
+}
+
+void Admin::modificarEmpleados(int ID) {
+    empleado.Modificar(this->empleadoAdmin ,ID);
+}
+
+void Admin::eliminarEmpleados(int ID) {
+    empleado.Eliminar(this->empleadoAdmin ,ID);
 }

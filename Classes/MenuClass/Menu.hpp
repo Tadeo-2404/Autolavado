@@ -10,6 +10,7 @@ public:
     void MenuProducto();
     void MenuCliente();
     void MenuTicket();
+    void MenuEmpleado();
 };
 
 #endif
