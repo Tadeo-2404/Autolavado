@@ -221,11 +221,11 @@ void Menu::MenuTicket()
 
 void Menu::MenuEmpleado()
 {
-        Admin admin;
+    Admin admin;
     int opc;
     do
     {
-        cout << "Ticket" << endl;
+        cout << "Empleados" << endl;
         cout << "1) Crear" << endl;
         cout << "2) Mostrar" << endl;
         cout << "3) Buscar" << endl;
@@ -240,44 +240,46 @@ void Menu::MenuEmpleado()
         case 1:
         {
             cout << "CREAR" << endl;
-            admin.crearTicket();
+            admin.crearEmpleado();
             break;
         }
 
         case 2:
         {
             cout << "MOSTRAR" << endl;
-            admin.mostrarTickets();
+            admin.mostrarEmpleados();
             break;
         }
 
         case 3:
         {
-            int IDticket;
+            string IDticket;
             cout << "BUSCAR" << endl;
-            cout << "Introduce el ID del ticket a buscar" <<endl;
+            admin.mostrarEmpleados();
+            cout << "Introduce el ID del empleado a buscar" <<endl;
             cin>>IDticket;
-            admin.buscarTickets(IDticket);
+            admin.buscarEmpleados(IDticket);
             break;
         }
 
         case 4:
         {
-            int IDticket;
+            string IDticket;
             cout << "ELIMINAR" << endl;
-            cout << "Introduce el ID del ticket a eliminar" <<endl;
+            admin.mostrarEmpleados();
+            cout << "Introduce el ID del empleado a eliminar" <<endl;
             cin>>IDticket;
-            admin.eliminarTickets(IDticket);
+            admin.eliminarEmpleados(IDticket);
             break;
         }
 
         case 5:
         {
-            int IDticket;
+            string IDticket;
             cout << "MODIFICAR" << endl;
             cout << "Introduce el ID del ticket a modificar" <<endl;
             cin>>IDticket;
-            admin.modificarTickets(IDticket);
+            admin.modificarEmpleados(IDticket);
             break;
         }
 
