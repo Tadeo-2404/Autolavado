@@ -1,6 +1,7 @@
 #ifndef ADMIN_HPP
 #define ADMIN_HPP
 #include "../TicketClass/Ticket.hpp"
+#include "../EmpleadoClass/Indice.hpp"
 #include "../EmpleadoClass/Empleado.hpp"
 
 class Admin {
@@ -8,6 +9,7 @@ class Admin {
     int contEmpleado = 0;
     Ticket ticketAdmin; //Auxiliar para crear ticket
     Empleado empleadoAdmin; //Auxiliar para crear empleado
+    Indice indiceAdmin;
 public:
     Admin(); //CONSTRUCTOR
     void setTicketAdmin(Ticket ticket);
@@ -33,9 +35,9 @@ public:
 
     void crearEmpleado(); //CREAR UNA INSTANCIA DE Empleado EN EL ARCHIVO EmpleadoS.TXT
     void mostrarEmpleados(); //MUESTRA LOS EmpleadoS DEL ARCHIVO EmpleadoS.TXT
-    void buscarEmpleados(int ID); //BUSCA UN Empleado DEL ARCHIVO EmpleadoS.TXT
-    void modificarEmpleados(int ID); //MODIFICA UN Empleado DEL ARCHIVO EmpleadoS.TXT
-    void eliminarEmpleados(int ID); //ELIMINA UN Empleado DEL ARCHIVO EmpleadoS.TXT
+    void buscarEmpleados(string ID); //BUSCA UN Empleado DEL ARCHIVO EmpleadoS.TXT
+    void modificarEmpleados(string ID); //MODIFICA UN Empleado DEL ARCHIVO EmpleadoS.TXT
+    void eliminarEmpleados(string ID); //ELIMINA UN Empleado DEL ARCHIVO EmpleadoS.TXT
 };
 
 #endif

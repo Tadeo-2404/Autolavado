@@ -1,13 +1,16 @@
 #include <iostream>
 #include "Admin.hpp"
 #include "../ClienteClass/Cliente.hpp"
-#include "../ProductoClass/Producto.hpp"
-#include "../TicketClass/Ticket.hpp"
-#include "../EmpleadoClass/Empleado.hpp"
 #include "../ClienteClass/cliente.cpp"
+
+#include "../ProductoClass/Producto.hpp"
 #include "../ProductoClass/producto.cpp"
+
+#include "../TicketClass/Ticket.hpp"
 #include "../TicketClass/Ticket.cpp"
+
 #include "../EmpleadoClass/Empleado.cpp"
+#include "../EmpleadoClass/indice.cpp"
 using namespace std;
 Cliente cliente;
 Producto producto;
@@ -94,22 +97,23 @@ void Admin::eliminarTickets(int ID) {
 
 //EMPLEADO
 void Admin::crearEmpleado() {
-    this->contEmpleado++;
-    empleado.Crear(this->empleadoAdmin, this->contEmpleado);
+    empleado.Crear(this->empleadoAdmin, this->indiceAdmin);
+    this->contEmpleado += 1;
 }
 
 void Admin::mostrarEmpleados() {
-    empleado.Mostrar(this->empleadoAdmin);
+    empleado.Mostrar(this->empleadoAdmin, this->indiceAdmin);
 }
 
-void Admin::buscarEmpleados(int ID) {
-    empleado.Buscar(this->empleadoAdmin ,ID);
+void Admin::buscarEmpleados(string ID) {
+    empleado.Buscar(this->empleadoAdmin ,ID, this->indiceAdmin);
 }
 
-void Admin::modificarEmpleados(int ID) {
-    empleado.Modificar(this->empleadoAdmin ,ID);
+void Admin::modificarEmpleados(string ID) {
+    empleado.Modificar(this->empleadoAdmin ,ID, this->indiceAdmin);
 }
 
-void Admin::eliminarEmpleados(int ID) {
-    empleado.Eliminar(this->empleadoAdmin ,ID);
+void Admin::eliminarEmpleados(string ID) {
+    empleado.Eliminar(this->empleadoAdmin ,ID, this->indiceAdmin);
+    this->contEmpleado -= 1;
 }
