@@ -10,12 +10,15 @@
 #include "../TicketClass/Ticket.cpp"
 
 #include "../EmpleadoClass/Empleado.cpp"
-#include "../EmpleadoClass/indice.cpp"
+
+#include "../ServicioClass/Servicio.hpp"
+#include "../ServicioClass/servicio.cpp"
 using namespace std;
 Cliente cliente;
 Producto producto;
 Ticket ticket;
 Empleado empleado;
+Servicio servicio;
 
 //CONSTRUCTOR
 Admin::Admin()
@@ -116,4 +119,25 @@ void Admin::modificarEmpleados(string ID) {
 void Admin::eliminarEmpleados(string ID) {
     empleado.Eliminar(this->empleadoAdmin ,ID, this->indiceAdmin);
     this->contEmpleado -= 1;
+}
+
+//SERVICIO
+void Admin::crearServicio() {
+    servicio.Crear(this->servicioAdmin, this->indiceAdmin);
+}
+
+void Admin::mostrarServicios() {
+    servicio.Mostrar(this->servicioAdmin, this->indiceAdmin);
+}
+
+void Admin::buscarServicios(int ID) {
+    servicio.Buscar(this->servicioAdmin ,ID, this->indiceAdmin);
+}
+
+void Admin::modificarServicios(int ID) {
+    servicio.Modificar(this->servicioAdmin ,ID, this->indiceAdmin);
+}
+
+void Admin::eliminarServicios(int ID) {
+    servicio.Eliminar(this->servicioAdmin ,ID, this->indiceAdmin);
 }
