@@ -11,6 +11,7 @@ public:
     void MenuCliente();
     void MenuTicket();
     void MenuEmpleado();
+    void MenuServicio();
 };
 
 #endif
