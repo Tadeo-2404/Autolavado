@@ -5,6 +5,7 @@
 #include "../EmpleadoClass/Empleado.hpp"
 #include "../EmpleadoClass/Indice.hpp"
 #include "../PromocionesClass/Promociones.hpp"
+#include "../PromocionesClass/PromocionesColision.hpp"
 
 class Admin {
     int contTicket = 0;
@@ -14,6 +15,7 @@ class Admin {
     Indice indiceAdmin;
     Servicio servicioAdmin;
     Promocion promocionAdmin;
+    PromocionesColision promocionColisionAdmin;
 public:
     Admin(); //CONSTRUCTOR
     void setTicketAdmin(Ticket ticket);
@@ -54,6 +56,12 @@ public:
     void buscarPromociones(const string& string); //BUSCA UNA PROMOCION DEL ARCHIVOS PROMOCION.BIN
     void modificarPromociones(const string& string); //MODIFICA UN PROMOCION DEL ARCHIVOS PROMOCION.BIN
     void eliminarPromociones(const string& string); //ELIMINA UN PROMOCION DEL ARCHIVOS PROMOCION.BIN
+
+    void crearPromocionColision(); 
+    void mostrarPromocionesColision();
+    void buscarPromocionesColision(const string& string); 
+    void modificarPromocionesColision(const string& string);
+    void eliminarPromocionesColision(const string& string); 
 };
 
 #endif

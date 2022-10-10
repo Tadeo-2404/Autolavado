@@ -6,10 +6,9 @@ using namespace std;
 
 Menu::Menu()
 {
-
 }
 
-void Menu::MenuProducto() 
+void Menu::MenuProducto()
 {
     Admin admin;
     int opc;
@@ -21,7 +20,7 @@ void Menu::MenuProducto()
         cout << "3) Buscar" << endl;
         cout << "4) Eliminar" << endl;
         cout << "5) Modificar" << endl;
-        cout << "0) Salir" <<endl;
+        cout << "0) Salir" << endl;
         cin >> opc;
         cin.ignore();
 
@@ -45,7 +44,7 @@ void Menu::MenuProducto()
         {
             string codigoBuscado;
             cout << "BUSCAR" << endl;
-            cout << "Introduce el codigo del producto a buscar" <<endl;
+            cout << "Introduce el codigo del producto a buscar" << endl;
             getline(cin, codigoBuscado);
             admin.buscarProductos(codigoBuscado);
             break;
@@ -55,7 +54,7 @@ void Menu::MenuProducto()
         {
             string codigoBuscado;
             cout << "ELIMINAR" << endl;
-            cout << "Introduce el codigo del producto a eliminar" <<endl;
+            cout << "Introduce el codigo del producto a eliminar" << endl;
             getline(cin, codigoBuscado);
             admin.eliminarProductos(codigoBuscado);
             break;
@@ -65,7 +64,7 @@ void Menu::MenuProducto()
         {
             string codigoBuscado;
             cout << "MODIFICAR" << endl;
-            cout << "Introduce el codigo del producto a modificar" <<endl;
+            cout << "Introduce el codigo del producto a modificar" << endl;
             getline(cin, codigoBuscado);
             admin.modificarProductos(codigoBuscado);
             break;
@@ -91,7 +90,7 @@ void Menu::MenuCliente()
         cout << "3) Buscar" << endl;
         cout << "4) Eliminar" << endl;
         cout << "5) Modificar" << endl;
-        cout << "0) Salir" <<endl;
+        cout << "0) Salir" << endl;
         cin >> opc;
         cin.ignore();
 
@@ -115,7 +114,7 @@ void Menu::MenuCliente()
         {
             string IDCliente;
             cout << "BUSCAR" << endl;
-            cout << "Introduce el ID del cliente a buscar" <<endl;
+            cout << "Introduce el ID del cliente a buscar" << endl;
             getline(cin, IDCliente);
             admin.buscarClientes(IDCliente);
             break;
@@ -125,7 +124,7 @@ void Menu::MenuCliente()
         {
             string IDCliente;
             cout << "ELIMINAR" << endl;
-            cout << "Introduce el ID del cliente a eliminar" <<endl;
+            cout << "Introduce el ID del cliente a eliminar" << endl;
             getline(cin, IDCliente);
             admin.eliminarClientes(IDCliente);
             break;
@@ -135,7 +134,7 @@ void Menu::MenuCliente()
         {
             string IDCliente;
             cout << "MODIFICAR" << endl;
-            cout << "Introduce el ID del cliente a modificar" <<endl;
+            cout << "Introduce el ID del cliente a modificar" << endl;
             getline(cin, IDCliente);
             admin.modificarClientes(IDCliente);
             break;
@@ -161,7 +160,7 @@ void Menu::MenuTicket()
         cout << "3) Buscar" << endl;
         cout << "4) Eliminar" << endl;
         cout << "5) Modificar" << endl;
-        cout << "0) Salir" <<endl;
+        cout << "0) Salir" << endl;
         cin >> opc;
         cin.ignore();
 
@@ -185,8 +184,8 @@ void Menu::MenuTicket()
         {
             int IDticket;
             cout << "BUSCAR" << endl;
-            cout << "Introduce el ID del ticket a buscar" <<endl;
-            cin>>IDticket;
+            cout << "Introduce el ID del ticket a buscar" << endl;
+            cin >> IDticket;
             admin.buscarTickets(IDticket);
             break;
         }
@@ -195,8 +194,8 @@ void Menu::MenuTicket()
         {
             int IDticket;
             cout << "ELIMINAR" << endl;
-            cout << "Introduce el ID del ticket a eliminar" <<endl;
-            cin>>IDticket;
+            cout << "Introduce el ID del ticket a eliminar" << endl;
+            cin >> IDticket;
             admin.eliminarTickets(IDticket);
             break;
         }
@@ -205,8 +204,8 @@ void Menu::MenuTicket()
         {
             int IDticket;
             cout << "MODIFICAR" << endl;
-            cout << "Introduce el ID del ticket a modificar" <<endl;
-            cin>>IDticket;
+            cout << "Introduce el ID del ticket a modificar" << endl;
+            cin >> IDticket;
             admin.modificarTickets(IDticket);
             break;
         }
@@ -231,7 +230,7 @@ void Menu::MenuEmpleado()
         cout << "3) Buscar" << endl;
         cout << "4) Eliminar" << endl;
         cout << "5) Modificar" << endl;
-        cout << "0) Salir" <<endl;
+        cout << "0) Salir" << endl;
         cin >> opc;
         cin.ignore();
 
@@ -256,8 +255,8 @@ void Menu::MenuEmpleado()
             string IDticket;
             cout << "BUSCAR" << endl;
             admin.mostrarEmpleados();
-            cout << "Introduce el ID del empleado a buscar" <<endl;
-            cin>>IDticket;
+            cout << "Introduce el ID del empleado a buscar" << endl;
+            cin >> IDticket;
             admin.buscarEmpleados(IDticket);
             break;
         }
@@ -267,8 +266,8 @@ void Menu::MenuEmpleado()
             string IDticket;
             cout << "ELIMINAR" << endl;
             admin.mostrarEmpleados();
-            cout << "Introduce el ID del empleado a eliminar" <<endl;
-            cin>>IDticket;
+            cout << "Introduce el ID del empleado a eliminar" << endl;
+            cin >> IDticket;
             admin.eliminarEmpleados(IDticket);
             break;
         }
@@ -277,8 +276,8 @@ void Menu::MenuEmpleado()
         {
             string IDticket;
             cout << "MODIFICAR" << endl;
-            cout << "Introduce el ID del ticket a modificar" <<endl;
-            cin>>IDticket;
+            cout << "Introduce el ID del ticket a modificar" << endl;
+            cin >> IDticket;
             admin.modificarEmpleados(IDticket);
             break;
         }
@@ -290,7 +289,6 @@ void Menu::MenuEmpleado()
 
     } while (opc != 0);
 }
-
 
 void Menu::MenuServicio()
 {
@@ -304,7 +302,7 @@ void Menu::MenuServicio()
         cout << "3) Buscar" << endl;
         cout << "4) Eliminar" << endl;
         cout << "5) Modificar" << endl;
-        cout << "0) Salir" <<endl;
+        cout << "0) Salir" << endl;
         cin >> opc;
         cin.ignore();
 
@@ -329,8 +327,8 @@ void Menu::MenuServicio()
             int IDticket;
             cout << "BUSCAR" << endl;
             admin.mostrarServicios();
-            cout << "Introduce el ID del Servicio a buscar" <<endl;
-            cin>>IDticket;
+            cout << "Introduce el ID del Servicio a buscar" << endl;
+            cin >> IDticket;
             admin.buscarServicios(IDticket);
             break;
         }
@@ -340,8 +338,8 @@ void Menu::MenuServicio()
             int IDticket;
             cout << "ELIMINAR" << endl;
             admin.mostrarServicios();
-            cout << "Introduce el ID del Servicio a eliminar" <<endl;
-            cin>>IDticket;
+            cout << "Introduce el ID del Servicio a eliminar" << endl;
+            cin >> IDticket;
             admin.eliminarServicios(IDticket);
             break;
         }
@@ -350,8 +348,8 @@ void Menu::MenuServicio()
         {
             int IDticket;
             cout << "MODIFICAR" << endl;
-            cout << "Introduce el ID del Servicio a modificar" <<endl;
-            cin>>IDticket;
+            cout << "Introduce el ID del Servicio a modificar" << endl;
+            cin >> IDticket;
             admin.modificarServicios(IDticket);
             break;
         }
@@ -368,76 +366,180 @@ void Menu::MenuPromociones()
 {
     Admin admin;
     Promocion promocion;
-    promocion.genera();
+    PromocionesColision promocionColision;
     string idABuscar, idAModificar, idAEliminar;
-    int opc;
+    int opc, opcMain;
+
+    cout << "Promociones" << endl;
     do
     {
-        cout << "Promociones" << endl;
-        cout << "1) Crear" << endl;
-        cout << "2) Mostrar" << endl;
-        cout << "3) Buscar" << endl;
-        cout << "4) Eliminar" << endl;
-        cout << "5) Modificar" << endl;
-        cout << "0) Salir" <<endl;
-        cin >> opc;
+        cout << "1) Resolviendo Colisiones" << endl;
+        cout << "2) Sin Resolver Colisones" << endl;
+        cout << "0) Salir" << endl;
+        cin >> opcMain;
         cin.ignore();
 
-        switch (opc)
+        switch (opcMain)
         {
         case 1:
         {
-            cout << "CREAR" << endl;
-            admin.crearPromocion();
-            break;
+            cout << "Promociones Sin Colisiones" << endl;
+            promocion.genera();
+            do
+            {
+                cout << "1) Crear" << endl;
+                cout << "2) Mostrar" << endl;
+                cout << "3) Buscar" << endl;
+                cout << "4) Eliminar" << endl;
+                cout << "5) Modificar" << endl;
+                cout << "0) Salir" << endl;
+                cin >> opc;
+                cin.ignore();
+
+                switch (opc)
+                {
+                case 1:
+                {
+                    cout << "CREAR" << endl;
+                    admin.crearPromocion();
+                    break;
+                }
+
+                case 2:
+                {
+                    cout << "MOSTRAR" << endl;
+                    admin.mostrarPromociones();
+                    break;
+                }
+
+                case 3:
+                {
+                    string IDticket;
+                    cout << "BUSCAR" << endl;
+                    admin.mostrarPromociones();
+                    cout << "Introduce el ID de la Promocion a buscar" << endl;
+                    getline(cin, IDticket);
+                    admin.buscarPromociones(IDticket);
+                    break;
+                }
+
+                case 4:
+                {
+                    string IDPromocion;
+                    cout << "Eliminar" << endl;
+                    admin.mostrarPromociones();
+                    cout << "Introduce el ID de la Promocion a eliminar" << endl;
+                    getline(cin, IDPromocion);
+                    admin.eliminarPromociones(IDPromocion);
+                    cout << "Se ha elimanado correctamente" << endl;
+                    break;
+                }
+
+                case 5:
+                {
+                    string IDPromocion;
+                    cout << "Modificar" << endl;
+                    admin.mostrarPromociones();
+                    cout << "Introduce el ID de la Promocion a modificar" << endl;
+                    getline(cin, IDPromocion);
+                    admin.modificarPromociones(IDPromocion);
+                    cout << "Se ha modificado correctamente" << endl;
+                    break;
+                }
+
+                default:
+                    cout << "Error: Opcion no valida, intentalo de nuevo" << endl;
+                    break;
+                }
+
+            } while (opc != 0);
+            break; // fin break 1
         }
 
         case 2:
         {
-            cout << "MOSTRAR" << endl;
-            admin.mostrarPromociones();
-            break;
+            cout << "Promociones con Colisiones" << endl;
+            promocionColision.genera();
+            do
+            {
+                cout << "1) Crear" << endl;
+                cout << "2) Mostrar" << endl;
+                cout << "3) Buscar" << endl;
+                cout << "4) Eliminar" << endl;
+                cout << "5) Modificar" << endl;
+                cout << "0) Salir" << endl;
+                cin >> opc;
+                cin.ignore();
+
+                switch (opc)
+                {
+                case 1:
+                {
+                    cout << "CREAR" << endl;
+                    admin.crearPromocionColision();
+                    break;
+                }
+
+                case 2:
+                {
+                    cout << "MOSTRAR" << endl;
+                    admin.mostrarPromocionesColision();
+                    break;
+                }
+
+                case 3:
+                {
+                    string IDticket;
+                    cout << "BUSCAR" << endl;
+                    admin.mostrarPromocionesColision();
+                    cout << "Introduce el ID de la Promocion a buscar" << endl;
+                    getline(cin, IDticket);
+                    admin.buscarPromocionesColision(IDticket);
+                    break;
+                }
+
+                case 4:
+                {
+                    string IDPromocion;
+                    cout << "Eliminar" << endl;
+                    admin.mostrarPromocionesColision();
+                    cout << "Introduce el ID de la Promocion a eliminar" << endl;
+                    getline(cin, IDPromocion);
+                    admin.eliminarPromocionesColision(IDPromocion);
+                    cout << "Se ha elimanado correctamente" << endl;
+                    break;
+                }
+
+                case 5:
+                {
+                    string IDPromocion;
+                    cout << "Modificar" << endl;
+                    admin.mostrarPromocionesColision();
+                    cout << "Introduce el ID de la Promocion a modificar" << endl;
+                    getline(cin, IDPromocion);
+                    admin.modificarPromocionesColision(IDPromocion);
+                    cout << "Se ha modificado correctamente" << endl;
+                    break;
+                }
+
+                default:
+                    cout << "Error: Opcion no valida, intentalo de nuevo" << endl;
+                    break;
+                }
+
+            } while (opc != 0);
+            break; // fin break 2
         }
 
-        case 3:
+        case 0:
         {
-            string IDticket;
-            cout << "BUSCAR" << endl;
-            admin.mostrarPromociones();
-            cout << "Introduce el ID de la Promocion a buscar" <<endl;
-            getline(cin, IDticket);
-            admin.buscarPromociones(IDticket);
-            break;
-        }
-
-        case 4:
-        {
-            string IDPromocion;
-            cout << "Eliminar" << endl;
-            admin.mostrarPromociones();
-            cout << "Introduce el ID de la Promocion a eliminar" <<endl;
-            getline(cin, IDPromocion);
-            admin.eliminarPromociones(IDPromocion);
-            cout << "Se ha elimanado correctamente" <<endl;
-            break;
-        }
-
-        case 5:
-        {
-            string IDPromocion;
-            cout << "Modificar" << endl;
-            admin.mostrarPromociones();
-            cout << "Introduce el ID de la Promocion a modificar" <<endl;
-            getline(cin, IDPromocion);
-            admin.modificarPromociones(IDPromocion);
-            cout << "Se ha modificado correctamente" <<endl;
+            cout << "Salir" << endl;
             break;
         }
 
         default:
-            cout << "Error: Opcion no valida, intentalo de nuevo" << endl;
+            cout << "Error: Opcion Incorrecta" << endl;
             break;
         }
-
-    } while (opc != 0);
+    } while (opcMain != 0);
 }
