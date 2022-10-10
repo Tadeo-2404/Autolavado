@@ -4,6 +4,7 @@
 #include "../ServicioClass/Servicio.hpp"
 #include "../EmpleadoClass/Empleado.hpp"
 #include "../EmpleadoClass/Indice.hpp"
+#include "../PromocionesClass/Promociones.hpp"
 
 class Admin {
     int contTicket = 0;
@@ -12,6 +13,7 @@ class Admin {
     Empleado empleadoAdmin; //Auxiliar para crear empleado
     Indice indiceAdmin;
     Servicio servicioAdmin;
+    Promocion promocionAdmin;
 public:
     Admin(); //CONSTRUCTOR
     void setTicketAdmin(Ticket ticket);
@@ -46,6 +48,12 @@ public:
     void buscarServicios(int ID); //BUSCA UN Servicio DEL ARCHIVOS SERVICIOS.BIN
     void modificarServicios(int ID); //MODIFICA UN Servicio DEL ARCHIVOS SERVICIOS.BIN
     void eliminarServicios(int ID); //ELIMINA UN Servicio DEL ARCHIVOS SERVICIOS.BIN
+
+    void crearPromocion(); //CREAR UNA INSTANCIA DE PROMOCION EN EL ARCHIVOS PromocionS.BIN
+    void mostrarPromociones(); //MUESTRA LOS PROMOCION DEL ARCHIVOS PROMOCION.BIN
+    void buscarPromociones(const string& string); //BUSCA UNA PROMOCION DEL ARCHIVOS PROMOCION.BIN
+    void modificarPromociones(const string& string); //MODIFICA UN PROMOCION DEL ARCHIVOS PROMOCION.BIN
+    void eliminarPromociones(const string& string); //ELIMINA UN PROMOCION DEL ARCHIVOS PROMOCION.BIN
 };
 
 #endif

@@ -15,6 +15,7 @@ int main()
         cout << "3) Ticket" << endl;
         cout << "4) Empleado" << endl;
         cout << "5) Servicio" << endl;
+        cout << "6) Promocion" <<endl;
         cout << "0) Salir" <<endl;
         cin>>opc;
         cin.ignore();
@@ -53,6 +54,13 @@ int main()
         {
             cout << "Servicio" << endl;
             menu.MenuServicio();
+            break;
+        }
+
+        case 6:
+        {
+            cout << "Servicio" << endl;
+            menu.MenuPromociones();
             break;
         }
 
