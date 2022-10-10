@@ -59,7 +59,7 @@ int main()
 
         case 6:
         {
-            cout << "Servicio" << endl;
+            cout << "Promociones" << endl;
             menu.MenuPromociones();
             break;
         }

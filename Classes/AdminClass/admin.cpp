@@ -16,6 +16,9 @@
 
 #include "../PromocionesClass/Promociones.hpp"
 #include "../PromocionesClass/promociones.cpp"
+
+#include "../PromocionesClass/PromocionesColision.hpp"
+#include "../PromocionesClass/promocionesColisiones.cpp"
 using namespace std;
 Cliente cliente;
 Producto producto;
@@ -23,7 +26,7 @@ Ticket ticket;
 Empleado empleado;
 Servicio servicio;
 Promocion promocion;
-
+PromocionesColision promocionColision;
 //CONSTRUCTOR
 Admin::Admin()
 {
@@ -152,14 +155,32 @@ void Admin::crearPromocion() {
     promocion.Crear(this->promocionAdmin);
 }
 
+void Admin::crearPromocionColision() {
+    this->promocionColisionAdmin = promocionColision.pedirRegistro();
+    promocionColision.Crear(this->promocionColisionAdmin);
+}
+
 void Admin::mostrarPromociones() {
     promocion.Mostrar();
+}
+
+void Admin::mostrarPromocionesColision() {
+    promocionColision.Mostrar();
 }
 
 void Admin::buscarPromociones(const string& ID) {
     if(promocion.Buscar(ID, this->promocionAdmin))
     {
         cout << this->promocionAdmin;
+    } else {
+        cout << "No existe el registro" <<endl;
+    }
+}
+
+void Admin::buscarPromocionesColision(const string& ID) {
+    if(promocionColision.Buscar(ID, this->promocionColisionAdmin))
+    {
+        cout << this->promocionColisionAdmin;
     } else {
         cout << "No existe el registro" <<endl;
     }
@@ -175,11 +196,30 @@ void Admin::modificarPromociones(const string &ID) {
     promocion.Modificar(ID, this->promocionAdmin);
 }
 
+void Admin::modificarPromocionesColision(const string &ID) {
+    PromocionesColision promocionBuscar;
+    if(promocionColision.Buscar(ID, this->promocionColisionAdmin))
+    {
+        promocionBuscar = promocionColision.pedirRegistro();
+        promocionColision.Modificar(ID, promocionBuscar);
+    }
+    promocionColision.Modificar(ID, this->promocionColisionAdmin);
+}
+
 void Admin::eliminarPromociones(const string& ID) {
     if (promocion.Buscar(ID, this->promocionAdmin))
     {
         promocion.Eliminar(ID, this->promocionAdmin);
         cout << this->promocionAdmin;
+        cout << "Eliminado correctamente" <<endl;
+    }
+}
+
+void Admin::eliminarPromocionesColision(const string& ID) {
+    if (promocionColision.Buscar(ID, this->promocionColisionAdmin))
+    {
+        promocionColision.Eliminar(ID, this->promocionColisionAdmin);
+        cout << this->promocionColisionAdmin;
         cout << "Eliminado correctamente" <<endl;
     }
 }
