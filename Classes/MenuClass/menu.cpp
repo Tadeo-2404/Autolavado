@@ -363,3 +363,81 @@ void Menu::MenuServicio()
 
     } while (opc != 0);
 }
+
+void Menu::MenuPromociones()
+{
+    Admin admin;
+    Promocion promocion;
+    promocion.genera();
+    string idABuscar, idAModificar, idAEliminar;
+    int opc;
+    do
+    {
+        cout << "Promociones" << endl;
+        cout << "1) Crear" << endl;
+        cout << "2) Mostrar" << endl;
+        cout << "3) Buscar" << endl;
+        cout << "4) Eliminar" << endl;
+        cout << "5) Modificar" << endl;
+        cout << "0) Salir" <<endl;
+        cin >> opc;
+        cin.ignore();
+
+        switch (opc)
+        {
+        case 1:
+        {
+            cout << "CREAR" << endl;
+            admin.crearPromocion();
+            break;
+        }
+
+        case 2:
+        {
+            cout << "MOSTRAR" << endl;
+            admin.mostrarPromociones();
+            break;
+        }
+
+        case 3:
+        {
+            string IDticket;
+            cout << "BUSCAR" << endl;
+            admin.mostrarPromociones();
+            cout << "Introduce el ID de la Promocion a buscar" <<endl;
+            getline(cin, IDticket);
+            admin.buscarPromociones(IDticket);
+            break;
+        }
+
+        case 4:
+        {
+            string IDPromocion;
+            cout << "Eliminar" << endl;
+            admin.mostrarPromociones();
+            cout << "Introduce el ID de la Promocion a eliminar" <<endl;
+            getline(cin, IDPromocion);
+            admin.eliminarPromociones(IDPromocion);
+            cout << "Se ha elimanado correctamente" <<endl;
+            break;
+        }
+
+        case 5:
+        {
+            string IDPromocion;
+            cout << "Modificar" << endl;
+            admin.mostrarPromociones();
+            cout << "Introduce el ID de la Promocion a modificar" <<endl;
+            getline(cin, IDPromocion);
+            admin.modificarPromociones(IDPromocion);
+            cout << "Se ha modificado correctamente" <<endl;
+            break;
+        }
+
+        default:
+            cout << "Error: Opcion no valida, intentalo de nuevo" << endl;
+            break;
+        }
+
+    } while (opc != 0);
+}

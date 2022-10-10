@@ -13,12 +13,16 @@
 
 #include "../ServicioClass/Servicio.hpp"
 #include "../ServicioClass/servicio.cpp"
+
+#include "../PromocionesClass/Promociones.hpp"
+#include "../PromocionesClass/promociones.cpp"
 using namespace std;
 Cliente cliente;
 Producto producto;
 Ticket ticket;
 Empleado empleado;
 Servicio servicio;
+Promocion promocion;
 
 //CONSTRUCTOR
 Admin::Admin()
@@ -140,4 +144,42 @@ void Admin::modificarServicios(int ID) {
 
 void Admin::eliminarServicios(int ID) {
     servicio.Eliminar(this->servicioAdmin ,ID, this->indiceAdmin);
+}
+
+//PROMOCION
+void Admin::crearPromocion() {
+    this->promocionAdmin = promocion.pedirRegistro();
+    promocion.Crear(this->promocionAdmin);
+}
+
+void Admin::mostrarPromociones() {
+    promocion.Mostrar();
+}
+
+void Admin::buscarPromociones(const string& ID) {
+    if(promocion.Buscar(ID, this->promocionAdmin))
+    {
+        cout << this->promocionAdmin;
+    } else {
+        cout << "No existe el registro" <<endl;
+    }
+}
+
+void Admin::modificarPromociones(const string &ID) {
+    Promocion promocionBuscar;
+    if(promocion.Buscar(ID, this->promocionAdmin))
+    {
+        promocionBuscar = promocion.pedirRegistro();
+        promocion.Modificar(ID, promocionBuscar);
+    }
+    promocion.Modificar(ID, this->promocionAdmin);
+}
+
+void Admin::eliminarPromociones(const string& ID) {
+    if (promocion.Buscar(ID, this->promocionAdmin))
+    {
+        promocion.Eliminar(ID, this->promocionAdmin);
+        cout << this->promocionAdmin;
+        cout << "Eliminado correctamente" <<endl;
+    }
 }
