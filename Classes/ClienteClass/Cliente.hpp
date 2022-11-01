@@ -20,6 +20,13 @@ public:
     void Buscar(string codigo);
     void Eliminar(string codigo);
     void Modificar(string codigo);
+
+    void CrearEncriptacion();
+    void MostrarEncriptacion();
+    void BuscarEncriptacion(string codigo);
+    void EliminarEncriptacion(string codigo);
+    void ModificarEncriptacion(string codigo);
+    
     string getID();
     string getNombre();
     string getApellido();
