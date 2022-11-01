@@ -62,6 +62,27 @@ void Admin::eliminarClientes(string ID) {
     cliente.Eliminar(ID);
 }
 
+//CLIENTE - ENCRYPTACION
+void Admin::crearClienteEncryptado() {
+    cliente.CrearEncriptacion();
+}
+
+void Admin::mostrarClientesEncryptado() {
+    cliente.MostrarEncriptacion();
+}
+
+void Admin::buscarClientesEncryptado(string ID) {
+    cliente.BuscarEncriptacion(ID);
+}
+
+void Admin::modificarClientesEncryptado(string ID) {
+    cliente.ModificarEncriptacion(ID);
+}
+
+void Admin::eliminarClientesEncryptado(string ID) {
+    cliente.EliminarEncriptacion(ID);
+}
+
 //PRODUCTO
 void Admin::crearProducto() {
     producto.Crear();

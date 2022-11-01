@@ -82,15 +82,13 @@ void Menu::MenuCliente()
 {
     Admin admin;
     int opc;
+
     do
     {
-        cout << "Cliente" << endl;
-        cout << "1) Crear" << endl;
-        cout << "2) Mostrar" << endl;
-        cout << "3) Buscar" << endl;
-        cout << "4) Eliminar" << endl;
-        cout << "5) Modificar" << endl;
+        cout << "1) Encriptacion" << endl;
+        cout << "2) Sin Encriptar" << endl;
         cout << "0) Salir" << endl;
+        cout << "Selecciona una opcion" << endl;
         cin >> opc;
         cin.ignore();
 
@@ -98,53 +96,153 @@ void Menu::MenuCliente()
         {
         case 1:
         {
-            cout << "CREAR" << endl;
-            admin.crearCliente();
+            do
+            {
+                cout << "Encriptacion" << endl;
+                cout << "1) Crear" << endl;
+                cout << "2) Mostrar" << endl;
+                cout << "3) Buscar" << endl;
+                cout << "4) Eliminar" << endl;
+                cout << "5) Modificar" << endl;
+                cout << "6) Desencryptar" <<endl;
+                cout << "0) Salir" << endl;
+                cin >> opc;
+                cin.ignore();
+
+                switch (opc)
+                {
+                case 1:
+                {
+                    cout << "CREAR" << endl;
+                    admin.crearClienteEncryptado();
+                    break;
+                }
+
+                case 2:
+                {
+                    cout << "MOSTRAR" << endl;
+                    admin.mostrarClientesEncryptado();
+                    break;
+                }
+
+                case 3:
+                {
+                    string IDCliente;
+                    cout << "BUSCAR" << endl;
+                    cout << "Introduce el ID del cliente a buscar" << endl;
+                    getline(cin, IDCliente);
+                    admin.buscarClientesEncryptado(IDCliente);
+                    break;
+                }
+
+                case 4:
+                {
+                    string IDCliente;
+                    cout << "ELIMINAR" << endl;
+                    cout << "Introduce el ID del cliente a eliminar" << endl;
+                    getline(cin, IDCliente);
+                    admin.eliminarClientesEncryptado(IDCliente);
+                    break;
+                }
+
+                case 5:
+                {
+                    string IDCliente;
+                    cout << "MODIFICAR" << endl;
+                    cout << "Introduce el ID del cliente a modificar" << endl;
+                    getline(cin, IDCliente);
+                    admin.modificarClientesEncryptado(IDCliente);
+                    break;
+                }
+
+                default:
+                    cout << "Error: Opcion no valida, intentalo de nuevo" << endl;
+                    break;
+                }
+
+            } while (opc != 0);
             break;
         }
 
         case 2:
         {
-            cout << "MOSTRAR" << endl;
-            admin.mostrarClientes();
+            do
+            {
+                cout << "Registros de Longitud Variable (Campos de Dimension)" << endl;
+                cout << "1) Crear" << endl;
+                cout << "2) Mostrar" << endl;
+                cout << "3) Buscar" << endl;
+                cout << "4) Eliminar" << endl;
+                cout << "5) Modificar" << endl;
+                cout << "0) Salir" << endl;
+                cin >> opc;
+                cin.ignore();
+
+                switch (opc)
+                {
+                case 1:
+                {
+                    cout << "CREAR" << endl;
+                    admin.crearCliente();
+                    break;
+                }
+
+                case 2:
+                {
+                    cout << "MOSTRAR" << endl;
+                    admin.mostrarClientes();
+                    break;
+                }
+
+                case 3:
+                {
+                    string IDCliente;
+                    cout << "BUSCAR" << endl;
+                    cout << "Introduce el ID del cliente a buscar" << endl;
+                    getline(cin, IDCliente);
+                    admin.buscarClientes(IDCliente);
+                    break;
+                }
+
+                case 4:
+                {
+                    string IDCliente;
+                    cout << "ELIMINAR" << endl;
+                    cout << "Introduce el ID del cliente a eliminar" << endl;
+                    getline(cin, IDCliente);
+                    admin.eliminarClientes(IDCliente);
+                    break;
+                }
+
+                case 5:
+                {
+                    string IDCliente;
+                    cout << "MODIFICAR" << endl;
+                    cout << "Introduce el ID del cliente a modificar" << endl;
+                    getline(cin, IDCliente);
+                    admin.modificarClientes(IDCliente);
+                    break;
+                }
+
+                default:
+                    cout << "Error: Opcion no valida, intentalo de nuevo" << endl;
+                    break;
+                }
+
+            } while (opc != 0);
             break;
         }
 
         case 3:
         {
-            string IDCliente;
-            cout << "BUSCAR" << endl;
-            cout << "Introduce el ID del cliente a buscar" << endl;
-            getline(cin, IDCliente);
-            admin.buscarClientes(IDCliente);
-            break;
-        }
-
-        case 4:
-        {
-            string IDCliente;
-            cout << "ELIMINAR" << endl;
-            cout << "Introduce el ID del cliente a eliminar" << endl;
-            getline(cin, IDCliente);
-            admin.eliminarClientes(IDCliente);
-            break;
-        }
-
-        case 5:
-        {
-            string IDCliente;
-            cout << "MODIFICAR" << endl;
-            cout << "Introduce el ID del cliente a modificar" << endl;
-            getline(cin, IDCliente);
-            admin.modificarClientes(IDCliente);
+            cout << "Salir" << endl;
             break;
         }
 
         default:
-            cout << "Error: Opcion no valida, intentalo de nuevo" << endl;
+            cout << "Error: opcion no valida" << endl;
             break;
         }
-
     } while (opc != 0);
 }
 

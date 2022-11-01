@@ -27,6 +27,12 @@ public:
     void modificarClientes(string ID); //MODIFICA UN CLIENTE DEL ARCHIVO CLIENTES.TXT
     void eliminarClientes(string ID); //ELIMINA UN CLIENTE DEL ARCHIVO DEL CLIENTES.TXT
 
+    void crearClienteEncryptado(); //CREAR UNA INSTANCIA DE CLIENTE EN EL ARCHIVO CLIENTE.TXT
+    void mostrarClientesEncryptado(); //MUESTRA LOS CLIENTES DEL CLIENTES.TXT
+    void buscarClientesEncryptado(string ID); //BUSCA UN CLIENTE DEL ARCHIVO CLIENTES.TXT
+    void modificarClientesEncryptado(string ID); //MODIFICA UN CLIENTE DEL ARCHIVO CLIENTES.TXT
+    void eliminarClientesEncryptado(string ID); //ELIMINA UN CLIENTE DEL ARCHIVO DEL CLIENTES.TXT
+
     void crearProducto(); //CREAR UNA INSTANCIA DE PRODUCTO EN EL ARCHIVO PRODUCTOS.TXT
     void mostrarProductos(); //MUESTRA LOS PRODUCTOS DEL ARCHIVO PRODUCTOS.TXT
     void buscarProductos(string ID); //BUSCA UN PROUDUCTO DEL ARCHIVO PRODUCTOS.TXT
