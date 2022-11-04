@@ -12,6 +12,7 @@ public:
     void MenuTicket();
     void MenuEmpleado();
     void MenuServicio();
+    void MenuFactura();
     void MenuPromociones();
 };
 

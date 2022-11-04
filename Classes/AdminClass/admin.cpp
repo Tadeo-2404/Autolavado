@@ -14,6 +14,8 @@
 #include "../ServicioClass/Servicio.hpp"
 #include "../ServicioClass/servicio.cpp"
 
+#include "../FacturaClass/factura.cpp"
+
 #include "../PromocionesClass/Promociones.hpp"
 #include "../PromocionesClass/promociones.cpp"
 
@@ -25,6 +27,7 @@ Producto producto;
 Ticket ticket;
 Empleado empleado;
 Servicio servicio;
+Factura factura;
 Promocion promocion;
 PromocionesColision promocionColision;
 //CONSTRUCTOR
@@ -44,6 +47,7 @@ void Admin::setTicketAdmin(Ticket ticket) {
 //CLIENTE
 void Admin::crearCliente() {
     cliente.Crear();
+    this->contClientes++;
 }
 
 void Admin::mostrarClientes() {
@@ -60,11 +64,13 @@ void Admin::modificarClientes(string ID) {
 
 void Admin::eliminarClientes(string ID) {
     cliente.Eliminar(ID);
+    this->contClientes--;
 }
 
 //CLIENTE - ENCRYPTACION
 void Admin::crearClienteEncryptado() {
     cliente.CrearEncriptacion();
+    this->contClientes++;
 }
 
 void Admin::mostrarClientesEncryptado() {
@@ -81,6 +87,7 @@ void Admin::modificarClientesEncryptado(string ID) {
 
 void Admin::eliminarClientesEncryptado(string ID) {
     cliente.EliminarEncriptacion(ID);
+    this->contClientes--;
 }
 
 //PRODUCTO
@@ -106,8 +113,8 @@ void Admin::eliminarProductos(string ID) {
 
 //TICKET
 void Admin::crearTicket() {
-    this->contTicket++;
     ticket.Crear(this->ticketAdmin, this->contTicket);
+    this->contTicket++;
 }
 
 void Admin::mostrarTickets() {
@@ -124,12 +131,13 @@ void Admin::modificarTickets(int ID) {
 
 void Admin::eliminarTickets(int ID) {
     ticket.Eliminar(this->ticketAdmin ,ID);
+    this->contTicket--;
 }
 
 //EMPLEADO
 void Admin::crearEmpleado() {
     empleado.Crear(this->empleadoAdmin, this->indiceAdmin);
-    this->contEmpleado += 1;
+    this->contEmpleado++;
 }
 
 void Admin::mostrarEmpleados() {
@@ -146,7 +154,7 @@ void Admin::modificarEmpleados(string ID) {
 
 void Admin::eliminarEmpleados(string ID) {
     empleado.Eliminar(this->empleadoAdmin ,ID, this->indiceAdmin);
-    this->contEmpleado -= 1;
+    this->contEmpleado--;
 }
 
 //SERVICIO
@@ -168,6 +176,29 @@ void Admin::modificarServicios(int ID) {
 
 void Admin::eliminarServicios(int ID) {
     servicio.Eliminar(this->servicioAdmin ,ID, this->indiceAdmin);
+}
+
+//FACTURAS
+void Admin::crearFactura() {
+    factura.Crear(this->facturaAdmin, this->indiceAdmin);
+    this->contFacturas++;
+}
+
+void Admin::mostrarFacturas() {
+    factura.Mostrar(this->facturaAdmin, this->indiceAdmin);
+}
+
+void Admin::buscarFactura(int ID) {
+    factura.Buscar(this->facturaAdmin ,ID, this->indiceAdmin);
+}
+
+void Admin::modificarFactura(int ID) {
+    factura.Modificar(this->facturaAdmin ,ID, this->indiceAdmin);
+}
+
+void Admin::eliminarFacturas(int ID) {
+    factura.Eliminar(this->facturaAdmin ,ID, this->indiceAdmin);
+    this->contFacturas--;
 }
 
 //PROMOCION

@@ -2,18 +2,23 @@
 #define ADMIN_HPP
 #include "../TicketClass/Ticket.hpp"
 #include "../ServicioClass/Servicio.hpp"
+#include "../FacturaClass/Factura.hpp"
 #include "../EmpleadoClass/Empleado.hpp"
 #include "../EmpleadoClass/Indice.hpp"
 #include "../PromocionesClass/Promociones.hpp"
 #include "../PromocionesClass/PromocionesColision.hpp"
 
 class Admin {
+    int contClientes = 0;
+    int contAutos = 0;
     int contTicket = 0;
+    int contFacturas = 0;
     int contEmpleado = 0;
     Ticket ticketAdmin; //Auxiliar para crear ticket
     Empleado empleadoAdmin; //Auxiliar para crear empleado
     Indice indiceAdmin;
     Servicio servicioAdmin;
+    Factura facturaAdmin;
     Promocion promocionAdmin;
     PromocionesColision promocionColisionAdmin;
 public:
@@ -56,6 +61,12 @@ public:
     void buscarServicios(int ID); //BUSCA UN Servicio DEL ARCHIVOS SERVICIOS.BIN
     void modificarServicios(int ID); //MODIFICA UN Servicio DEL ARCHIVOS SERVICIOS.BIN
     void eliminarServicios(int ID); //ELIMINA UN Servicio DEL ARCHIVOS SERVICIOS.BIN
+
+    void crearFactura(); //CREAR UNA INSTANCIA DE FACTURA EN EL ARCHIVOS FACTURAS.BIN
+    void mostrarFacturas(); //MUESTRA LOS FACTURAS DEL ARCHIVOS FACTURAS.BIN
+    void buscarFactura(int ID); //BUSCA UNA FACTURA DEL ARCHIVOS FACTURAS.BIN
+    void modificarFactura(int ID); //MODIFICA UNA FACTURA DEL ARCHIVOS SERVICIOS.BIN
+    void eliminarFacturas(int ID); //ELIMINA UNA FACTURA DEL ARCHIVOS FACTURAS.BIN
 
     void crearPromocion(); //CREAR UNA INSTANCIA DE PROMOCION EN EL ARCHIVOS PromocionS.BIN
     void mostrarPromociones(); //MUESTRA LOS PROMOCION DEL ARCHIVOS PROMOCION.BIN
