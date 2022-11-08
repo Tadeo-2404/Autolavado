@@ -68,8 +68,8 @@ public:
     void buscarFactura(string ID); //BUSCA UNA FACTURA DEL ARCHIVOS FACTURAS.BIN
     void modificarFactura(string ID); //MODIFICA UNA FACTURA DEL ARCHIVOS SERVICIOS.BIN
     void eliminarFacturas(string ID); //ELIMINA UNA FACTURA DEL ARCHIVOS FACTURAS.BIN
-    void comprimirFacturas(string entrada, string salida);
-    void descomprimirFactura(string entrada, string salida);
+    void comprimirFacturas();
+    void descomprimirFactura();
 
     void crearPromocion(); //CREAR UNA INSTANCIA DE PROMOCION EN EL ARCHIVOS PromocionS.BIN
     void mostrarPromociones(); //MUESTRA LOS PROMOCION DEL ARCHIVOS PROMOCION.BIN

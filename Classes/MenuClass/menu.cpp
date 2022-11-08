@@ -527,34 +527,14 @@ void Menu::MenuFactura()
                 case 1:
                 {
                     cout << "Comprimir" <<endl;
-                    string archivoEntrada = "Facturas.bin", archivoComprimido = "FacturasComprimido.bin";
-                    ifstream inFile;
-                    inFile.open(archivoEntrada, ios::in | ios::binary);
-
-                    if(inFile.fail())
-                    {
-                        cout << "Error: No se pudo abrir el archivo " << archivoEntrada <<endl;
-                        break;
-                    }
-                    
-                    admin.comprimirFacturas(archivoEntrada, archivoComprimido);
+                    admin.comprimirFacturas();
                     break;
                 }
 
                 case 2:
                 {
                     cout << "Descomprimir" <<endl;
-                    string archivoSalida = "FacturasDescomprimido.bin", archivoComprimido = "FacturasComprimido.bin";
-                    ofstream outFile;
-                    outFile.open(archivoComprimido, ios::out | ios::binary);
-
-                    if(outFile.fail())
-                    {
-                        cout << "Error: No se pudo abrir el archivo " << archivoComprimido <<endl;
-                        break;
-                    }
-                    
-                    admin.descomprimirFactura(archivoComprimido, archivoSalida);
+                    admin.descomprimirFactura();
                     break;
                 }
 

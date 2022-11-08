@@ -188,11 +188,11 @@ void Admin::eliminarFacturas(string ID) {
     factura.Eliminar(this->facturaAdmin ,ID, this->indiceAdmin);
 }
 
-void Admin::comprimirFacturas(string entrada, string salida) {
+void Admin::comprimirFacturas() {
     cout << "Comprimido exitosamente, revisa tu directorio" << endl;
 }
 
-void Admin::descomprimirFactura(string entrada, string salida) {
+void Admin::descomprimirFactura() {
     cout << "Descomprimido exitosamente, revisa tu directorio" << endl;
 }
 
