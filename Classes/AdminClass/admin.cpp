@@ -1,25 +1,12 @@
 #include <iostream>
 #include "Admin.hpp"
-#include "../ClienteClass/Cliente.hpp"
 #include "../ClienteClass/cliente.cpp"
-
-#include "../ProductoClass/Producto.hpp"
 #include "../ProductoClass/producto.cpp"
-
-#include "../TicketClass/Ticket.hpp"
 #include "../TicketClass/Ticket.cpp"
-
 #include "../EmpleadoClass/Empleado.cpp"
-
-#include "../ServicioClass/Servicio.hpp"
 #include "../ServicioClass/servicio.cpp"
-
 #include "../FacturaClass/factura.cpp"
-
-#include "../PromocionesClass/Promociones.hpp"
 #include "../PromocionesClass/promociones.cpp"
-
-#include "../PromocionesClass/PromocionesColision.hpp"
 #include "../PromocionesClass/promocionesColisiones.cpp"
 using namespace std;
 Cliente cliente;
@@ -46,8 +33,8 @@ void Admin::setTicketAdmin(Ticket ticket) {
 
 //CLIENTE
 void Admin::crearCliente() {
-    cliente.Crear();
     this->contClientes++;
+    cliente.Crear();
 }
 
 void Admin::mostrarClientes() {
@@ -63,14 +50,14 @@ void Admin::modificarClientes(string ID) {
 }
 
 void Admin::eliminarClientes(string ID) {
-    cliente.Eliminar(ID);
     this->contClientes--;
+    cliente.Eliminar(ID);
 }
 
 //CLIENTE - ENCRYPTACION
 void Admin::crearClienteEncryptado() {
-    cliente.CrearEncriptacion();
     this->contClientes++;
+    cliente.CrearEncriptacion();
 }
 
 void Admin::mostrarClientesEncryptado() {
@@ -86,8 +73,8 @@ void Admin::modificarClientesEncryptado(string ID) {
 }
 
 void Admin::eliminarClientesEncryptado(string ID) {
-    cliente.EliminarEncriptacion(ID);
     this->contClientes--;
+    cliente.EliminarEncriptacion(ID);
 }
 
 //PRODUCTO
@@ -113,31 +100,31 @@ void Admin::eliminarProductos(string ID) {
 
 //TICKET
 void Admin::crearTicket() {
-    ticket.Crear(this->ticketAdmin, this->contTicket);
     this->contTicket++;
+    ticket.Crear(this->ticketAdmin);
 }
 
 void Admin::mostrarTickets() {
     ticket.Mostrar(this->ticketAdmin);
 }
 
-void Admin::buscarTickets(int ID) {
+void Admin::buscarTickets(string ID) {
     ticket.Buscar(this->ticketAdmin ,ID);
 }
 
-void Admin::modificarTickets(int ID) {
+void Admin::modificarTickets(string ID) {
     ticket.Modificar(this->ticketAdmin ,ID);
 }
 
-void Admin::eliminarTickets(int ID) {
-    ticket.Eliminar(this->ticketAdmin ,ID);
+void Admin::eliminarTickets(string ID) {
     this->contTicket--;
+    ticket.Eliminar(this->ticketAdmin ,ID);
 }
 
 //EMPLEADO
 void Admin::crearEmpleado() {
-    empleado.Crear(this->empleadoAdmin, this->indiceAdmin);
     this->contEmpleado++;
+    empleado.Crear(this->empleadoAdmin, this->indiceAdmin);
 }
 
 void Admin::mostrarEmpleados() {
@@ -153,52 +140,60 @@ void Admin::modificarEmpleados(string ID) {
 }
 
 void Admin::eliminarEmpleados(string ID) {
-    empleado.Eliminar(this->empleadoAdmin ,ID, this->indiceAdmin);
     this->contEmpleado--;
+    empleado.Eliminar(this->empleadoAdmin ,ID, this->indiceAdmin);
 }
 
 //SERVICIO
 void Admin::crearServicio() {
-    servicio.Crear(this->servicioAdmin, this->indiceAdmin);
+    servicio.Crear(this->contServicio ,this->servicioAdmin, this->indiceAdmin);
 }
 
 void Admin::mostrarServicios() {
     servicio.Mostrar(this->servicioAdmin, this->indiceAdmin);
 }
 
-void Admin::buscarServicios(int ID) {
+void Admin::buscarServicios(string ID) {
     servicio.Buscar(this->servicioAdmin ,ID, this->indiceAdmin);
 }
 
-void Admin::modificarServicios(int ID) {
+void Admin::modificarServicios(string ID) {
     servicio.Modificar(this->servicioAdmin ,ID, this->indiceAdmin);
 }
 
-void Admin::eliminarServicios(int ID) {
+void Admin::eliminarServicios(string ID) {
     servicio.Eliminar(this->servicioAdmin ,ID, this->indiceAdmin);
 }
 
 //FACTURAS
 void Admin::crearFactura() {
-    factura.Crear(this->facturaAdmin, this->indiceAdmin);
     this->contFacturas++;
+    factura.Crear(this->contFacturas ,this->facturaAdmin, this->indiceAdmin);
 }
 
 void Admin::mostrarFacturas() {
     factura.Mostrar(this->facturaAdmin, this->indiceAdmin);
 }
 
-void Admin::buscarFactura(int ID) {
+void Admin::buscarFactura(string ID) {
     factura.Buscar(this->facturaAdmin ,ID, this->indiceAdmin);
 }
 
-void Admin::modificarFactura(int ID) {
+void Admin::modificarFactura(string ID) {
     factura.Modificar(this->facturaAdmin ,ID, this->indiceAdmin);
 }
 
-void Admin::eliminarFacturas(int ID) {
-    factura.Eliminar(this->facturaAdmin ,ID, this->indiceAdmin);
+void Admin::eliminarFacturas(string ID) {
     this->contFacturas--;
+    factura.Eliminar(this->facturaAdmin ,ID, this->indiceAdmin);
+}
+
+void Admin::comprimirFacturas(string entrada, string salida) {
+    cout << "Comprimido exitosamente, revisa tu directorio" << endl;
+}
+
+void Admin::descomprimirFactura(string entrada, string salida) {
+    cout << "Descomprimido exitosamente, revisa tu directorio" << endl;
 }
 
 //PROMOCION

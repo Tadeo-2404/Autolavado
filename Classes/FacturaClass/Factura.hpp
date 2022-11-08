@@ -1,34 +1,35 @@
 #ifndef FACTURA_HPP
 #define FACTURA_HPP
 #include "../EmpleadoClass/Indice.hpp"
+#include "../../Functions/Functions.hpp"
 #include <string>
 using namespace std;
 
 class Factura
 {
-    int ID;
-    int IDCliente;
-    int IDAuto;
-    int IDServicio;
+    string ID;
+    string IDCliente;
+    string IDAuto;
+    string IDServicio;
 public:
     Factura();
-    Factura(int ID, int IDCliente, int IDAuto, int IDServicio);
+    Factura(string ID, string IDCliente, string IDAuto, string IDServicio);
     ~Factura();
-    void Crear(Factura &Factura, Indice &indice);
+    void Crear(int contFactura, Factura &Factura, Indice &indice);
     void Mostrar(Factura &Factura, Indice &indice);
-    void Buscar(Factura &Factura, int ID, Indice &indice);
-    void Eliminar(Factura &Factura, int ID, Indice &indice);
-    void Modificar(Factura &Factura, int ID, Indice &indice);
+    void Buscar(Factura &Factura, string ID, Indice &indice);
+    void Eliminar(Factura &Factura, string ID, Indice &indice);
+    void Modificar(Factura &Factura, string ID, Indice &indice);
 
-    int getID();
-    int getIDCliente();
-    int getIDAuto();
-    int getIDServicio();
+    string getID();
+    string getIDCliente();
+    string getIDAuto();
+    string getIDServicio();
 
-    void setID(int ID);
-    void setIDCliente(int IDCliente);
-    void setIDAuto(int IDAuto);
-    void setIDServicio(int IDServicio);
+    void setID(string ID);
+    void setIDCliente(string IDCliente);
+    void setIDAuto(string IDAuto);
+    void setIDServicio(string IDServicio);
 };
 
 #endif

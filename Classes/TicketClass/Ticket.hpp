@@ -1,27 +1,27 @@
 #ifndef TICKET_HPP
 #define TICKET_HPP
 #include <string>
+#include "../../Functions/functions.hpp"
 using namespace std;
 
 class Ticket {
-    int ID;
-    int cont;
+    string ID = generarID();
     string IDAuto;
     string IDCliente;
     string IDServicio;
 public:
    Ticket();
-   Ticket(int ID,string IDAuto, string IDCliente, string IDServicio);
-    void Crear(Ticket &ticket, int ID);
+   Ticket(string ID,string IDAuto, string IDCliente, string IDServicio);
+    void Crear(Ticket &ticket);
     void Mostrar(Ticket &ticket);
-    void Buscar(Ticket &ticket ,int codigo);
-    void Eliminar(Ticket &ticket ,int codigo);
-    void Modificar(Ticket &ticket ,int codigo);
-    int getID();
+    void Buscar(Ticket &ticket ,string codigo);
+    void Eliminar(Ticket &ticket ,string codigo);
+    void Modificar(Ticket &ticket ,string codigo);
+    string getID();
    string getIDAuto();
    string getIDCliente();
    string getIDServicio();
-   void setID(int ID);
+   void setID(string ID);
    void setIDAuto(string IDAuto);
    void setIDCliente(string IDCliente);
    void setIDServicio(string IDServicio);

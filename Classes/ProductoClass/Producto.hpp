@@ -1,10 +1,11 @@
 #ifndef PRODUCTO_HPP
 #define PRODUCTO_HPP
 #include<iostream>
+#include "../../Functions/functions.hpp"
 using namespace std;
 
 class Producto {
-    string codigo;
+    string codigo = generarID();
     string codigoProvedor;
     string descripcion;
     string precioCompra;

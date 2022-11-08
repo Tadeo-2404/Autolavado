@@ -13,6 +13,7 @@ class Admin {
     int contAutos = 0;
     int contTicket = 0;
     int contFacturas = 0;
+    int contServicio = 0;
     int contEmpleado = 0;
     Ticket ticketAdmin; //Auxiliar para crear ticket
     Empleado empleadoAdmin; //Auxiliar para crear empleado
@@ -46,9 +47,9 @@ public:
 
     void crearTicket(); //CREAR UNA INSTANCIA DE TICKET EN EL ARCHIVO TICKETS.TXT
     void mostrarTickets(); //MUESTRA LOS TICKETS DEL ARCHIVO TICKETS.TXT
-    void buscarTickets(int ID); //BUSCA UN TICKET DEL ARCHIVO TICKETS.TXT
-    void modificarTickets(int ID); //MODIFICA UN TICKET DEL ARCHIVO TICKETS.TXT
-    void eliminarTickets(int ID); //ELIMINA UN TICKET DEL ARCHIVO TICKETS.TXT
+    void buscarTickets(string ID); //BUSCA UN TICKET DEL ARCHIVO TICKETS.TXT
+    void modificarTickets(string ID); //MODIFICA UN TICKET DEL ARCHIVO TICKETS.TXT
+    void eliminarTickets(string ID); //ELIMINA UN TICKET DEL ARCHIVO TICKETS.TXT
 
     void crearEmpleado(); //CREAR UNA INSTANCIA DE Empleado EN EL ARCHIVO EmpleadoS.TXT
     void mostrarEmpleados(); //MUESTRA LOS EmpleadoS DEL ARCHIVO EmpleadoS.TXT
@@ -58,15 +59,17 @@ public:
 
     void crearServicio(); //CREAR UNA INSTANCIA DE Servicio EN EL ARCHIVOS SERVICIOS.BIN
     void mostrarServicios(); //MUESTRA LOS SERVICIOS DEL ARCHIVOS SERVICIOS.BIN
-    void buscarServicios(int ID); //BUSCA UN Servicio DEL ARCHIVOS SERVICIOS.BIN
-    void modificarServicios(int ID); //MODIFICA UN Servicio DEL ARCHIVOS SERVICIOS.BIN
-    void eliminarServicios(int ID); //ELIMINA UN Servicio DEL ARCHIVOS SERVICIOS.BIN
+    void buscarServicios(string ID); //BUSCA UN Servicio DEL ARCHIVOS SERVICIOS.BIN
+    void modificarServicios(string ID); //MODIFICA UN Servicio DEL ARCHIVOS SERVICIOS.BIN
+    void eliminarServicios(string ID); //ELIMINA UN Servicio DEL ARCHIVOS SERVICIOS.BIN
 
     void crearFactura(); //CREAR UNA INSTANCIA DE FACTURA EN EL ARCHIVOS FACTURAS.BIN
     void mostrarFacturas(); //MUESTRA LOS FACTURAS DEL ARCHIVOS FACTURAS.BIN
-    void buscarFactura(int ID); //BUSCA UNA FACTURA DEL ARCHIVOS FACTURAS.BIN
-    void modificarFactura(int ID); //MODIFICA UNA FACTURA DEL ARCHIVOS SERVICIOS.BIN
-    void eliminarFacturas(int ID); //ELIMINA UNA FACTURA DEL ARCHIVOS FACTURAS.BIN
+    void buscarFactura(string ID); //BUSCA UNA FACTURA DEL ARCHIVOS FACTURAS.BIN
+    void modificarFactura(string ID); //MODIFICA UNA FACTURA DEL ARCHIVOS SERVICIOS.BIN
+    void eliminarFacturas(string ID); //ELIMINA UNA FACTURA DEL ARCHIVOS FACTURAS.BIN
+    void comprimirFacturas(string entrada, string salida);
+    void descomprimirFactura(string entrada, string salida);
 
     void crearPromocion(); //CREAR UNA INSTANCIA DE PROMOCION EN EL ARCHIVOS PromocionS.BIN
     void mostrarPromociones(); //MUESTRA LOS PROMOCION DEL ARCHIVOS PROMOCION.BIN

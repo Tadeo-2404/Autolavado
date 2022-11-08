@@ -2,12 +2,13 @@
 #define EMPLEADO_HPP
 #include <string>
 #include "Indice.hpp"
+#include "../../Functions/functions.hpp"
 using namespace std;
 
 class Empleado
 {
 private:
-    string ID;
+    string ID = generarID();
     string nombre;
     string apellido;
     string ciudadOrigen;

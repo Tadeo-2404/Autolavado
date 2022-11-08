@@ -32,9 +32,8 @@ void Producto::Crear()
     }
 
     string codigo, codigoProvedor, precioVenta, precioCompra, descripcion;
+    codigo = this->codigo;
     cout << "Bienvenido a crear producto" << endl;
-    cout << "Ingrese el codigo de 10 digitos para el producto" << endl;
-    getline(cin, codigo);
 
     cout << "Ingresa el Codigo del proveedor" << endl;
     getline(cin, codigoProvedor);
@@ -106,13 +105,13 @@ void Producto::Buscar(string productoBuscado)
 
     while (true)
     {
-        getline(archivo, codigo, ',');
+        getline(archivo, this->codigo, ',');
         if (archivo.eof())
             break;
-        getline(archivo, codigoProvedor, ',');
-        getline(archivo, precioVenta, ',');
-        getline(archivo, precioCompra, ',');
-        getline(archivo, descripcion);
+        getline(archivo, this->codigoProvedor, ',');
+        getline(archivo, this->precioVenta, ',');
+        getline(archivo, this->precioCompra, ',');
+        getline(archivo, this->descripcion);
         if (codigo == productoBuscado)
         {
             cont++;
@@ -123,11 +122,11 @@ void Producto::Buscar(string productoBuscado)
             cout << setw(15) << "Precio Venta";
             cout << setw(15) << "Precio Compra";
             cout << setw(15) << "Descripcion" << endl;
-            cout << setw(15) << codigo;
-            cout << setw(20) << codigoProvedor;
-            cout << setw(15) << precioVenta;
-            cout << setw(15) << precioCompra;
-            cout << setw(15) << descripcion <<endl;
+            cout << setw(15) << this->codigo;
+            cout << setw(20) << this->codigoProvedor;
+            cout << setw(15) << this->precioVenta;
+            cout << setw(15) << this->precioCompra;
+            cout << setw(15) << this->descripcion <<endl;
         }
     }
     if (cont == 0)

@@ -2,18 +2,17 @@
 #include <fstream>
 #include <iomanip>
 #include "Factura.hpp"
-#include "../EmpleadoClass/indice.cpp"
 using namespace std;
 
 Factura::Factura()
 {
-    this->ID = NULL;
-    this->IDCliente = NULL;
-    this->IDServicio = NULL;
-    this->IDAuto = NULL;
+    this->ID = "";
+    this->IDCliente = "";
+    this->IDServicio = "";
+    this->IDAuto = "";
 }
 
-Factura::Factura(int ID, int IDCliente, int IDAuto, int IDServicio) 
+Factura::Factura(string ID, string IDCliente, string IDAuto, string IDServicio) 
 {
     this->ID = ID;
     this->IDCliente = IDCliente;
@@ -26,9 +25,9 @@ Factura::~Factura()
     
 }
 
-void Factura::Crear(Factura &factura, Indice &indice)
+void Factura::Crear(int contFactura ,Factura &factura, Indice &indice)
 {
-    int temp;
+    string temp;
     ofstream archivoFacturas, archivoIndices;
     archivoFacturas.open("Facturas.bin", ios::app | ios::binary);
 
@@ -37,32 +36,26 @@ void Factura::Crear(Factura &factura, Indice &indice)
         exit(1);
     }
 
-    cout << "Introduce el ID de la Factura" <<endl;
-    cin>>temp;
-    cin.ignore();
-    factura.setID(temp);
+    factura.setID(generarID());
 
     cout << "Introduce el ID del Cliente" <<endl;
-    cin>>temp;
-    cin.ignore();
+    getline(cin, temp);
     factura.setIDCliente(temp);
 
     cout << "Introduce el ID del Auto" <<endl;
-    cin>>temp;
-    cin.ignore();
+    getline(cin, temp);
     factura.setIDAuto(temp);
 
     cout << "Introduce el ID del Servicio" <<endl;
-    cin>>temp;
-    cin.ignore();
+    getline(cin, temp);
     factura.setIDServicio(temp);
 
-    int pos = (factura.getID()-1)*sizeof(Factura);
+    int pos = (contFactura-1)*sizeof(Factura);
     archivoFacturas.seekp(pos, ios::beg);
     archivoFacturas.write(reinterpret_cast<char*>(&factura), sizeof(Factura));
     archivoFacturas.close();
     indice.setPos(pos);
-    indice.setID(to_string(ID));
+    indice.setID(factura.getID());
     archivoIndices.open("Indices.bin", ios::app | ios::binary);
     archivoIndices.write(reinterpret_cast<char*>((&indice)), sizeof(Indice));
     archivoIndices.close();
@@ -124,7 +117,7 @@ void Factura::Mostrar(Factura &factura, Indice &indice)
     archivoFacturas.close();
 }
 
-void Factura::Buscar(Factura &factura ,int ID, Indice &indice) 
+void Factura::Buscar(Factura &factura ,string ID, Indice &indice) 
 {
     ifstream archivoFacturas("Facturas.bin", ios::app | ios::binary);
     ifstream  archivoIndices("Indices.bin", ios::app | ios::binary);
@@ -143,7 +136,7 @@ void Factura::Buscar(Factura &factura ,int ID, Indice &indice)
         archivoIndices.read((char*)(&indice), sizeof(indice));
         if(archivoIndices.eof()) break;
 
-        if (stoi(indice.getID()) == ID)
+        if (indice.getID() == ID)
         {
             archivoFacturas.seekg((stoi(indice.getID()) - 1) * sizeof(Factura), ios::beg);
             archivoFacturas.read((char *)&factura, sizeof(Factura));
@@ -171,7 +164,7 @@ void Factura::Buscar(Factura &factura ,int ID, Indice &indice)
     archivoFacturas.close();
 }
     
-void Factura::Eliminar(Factura &factura ,int ID, Indice &indice)
+void Factura::Eliminar(Factura &factura , string ID, Indice &indice)
 {
     ifstream archivoFacturas("Facturas.bin", ios::app | ios::binary);
     ifstream  archivoIndices("Indices.bin", ios::app | ios::binary);
@@ -193,7 +186,7 @@ void Factura::Eliminar(Factura &factura ,int ID, Indice &indice)
         archivoIndices.read((char*)(&indice), sizeof(indice));
         if(archivoIndices.eof()) break;
 
-        if (stoi(indice.getID()) == ID)
+        if (indice.getID() == ID)
         {
             archivoFacturas.seekg((stoi(indice.getID())-1)*sizeof(Factura), ios::beg);
             archivoFacturas.read((char*)&factura,sizeof(Factura));
@@ -224,7 +217,7 @@ void Factura::Eliminar(Factura &factura ,int ID, Indice &indice)
             }
         }
 
-        if (stoi(indice.getID()) != ID)
+        if (indice.getID() != ID)
         {
             archivoFacturas.seekg((stoi(indice.getID())-1)*sizeof(Factura), ios::beg);
             archivoFacturas.read((char*)&factura,sizeof(Factura));
@@ -252,13 +245,14 @@ void Factura::Eliminar(Factura &factura ,int ID, Indice &indice)
     cout << "Se ha elimnado el Empleado correctamente" << endl;
 }
 
-void Factura::Modificar(Factura &factura ,int ID, Indice &indice)
+void Factura::Modificar(Factura &factura ,string ID, Indice &indice)
 {
     ifstream archivoFacturas("Facturas.bin", ios::app | ios::binary);
     ifstream  archivoIndices("Indices.bin", ios::app | ios::binary);
     ofstream archivoFacturasTemp("FacturasTemp.bin", ios::app | ios::binary);
     ofstream archivoIndicesTemp("IndicesTemp.bin", ios::app | ios::binary);
     int cont = 0, opc;
+    string temp;
     char select;
 
     if (archivoIndices.fail() || archivoFacturas.fail())
@@ -274,7 +268,7 @@ void Factura::Modificar(Factura &factura ,int ID, Indice &indice)
         archivoIndices.read(reinterpret_cast<char*>(&indice), sizeof(Indice));
         if(archivoIndices.eof()) break;
 
-        if (stoi(indice.getID()) == ID)
+        if (indice.getID() == ID)
         {
             archivoFacturas.seekg((stoi(indice.getID()) - 1) * sizeof(Factura), ios::beg);
             archivoFacturas.read(reinterpret_cast<char *>(&factura), sizeof(Factura));
@@ -310,8 +304,8 @@ void Factura::Modificar(Factura &factura ,int ID, Indice &indice)
                 {
                     cout << "Modificar ID" << endl;
                     cout << "Introduce el nuevo ID" << endl;
-                    cin>>opc;
-                    factura.setID(opc);
+                    getline(cin, temp);
+                    factura.setID(temp);
                     break;
                 }
 
@@ -319,8 +313,8 @@ void Factura::Modificar(Factura &factura ,int ID, Indice &indice)
                 {
                     cout << "Modificar IDCliente" << endl;
                     cout << "Introduce el nuevo IDCliente" << endl;
-                    cin>>opc;
-                    factura.setIDCliente(opc);
+                    getline(cin, temp);
+                    factura.setIDCliente(temp);
                     break;
                 }
 
@@ -328,8 +322,8 @@ void Factura::Modificar(Factura &factura ,int ID, Indice &indice)
                 {
                     cout << "Modificar IDAuto" << endl;
                     cout << "Introduce el nuevo IDAuto" << endl;
-                    cin>>opc;
-                    factura.setIDAuto(opc);
+                    getline(cin, temp);
+                    factura.setIDAuto(temp);
                     break;
                 }
 
@@ -337,8 +331,8 @@ void Factura::Modificar(Factura &factura ,int ID, Indice &indice)
                 {
                     cout << "Modificar IDServicio" << endl;
                     cout << "Introduce el nuevo IDServicio" << endl;
-                    cin>>opc;
-                    factura.setIDServicio(opc);
+                    getline(cin, temp);
+                    factura.setIDServicio(temp);
                     break;
                 }
 
@@ -383,42 +377,42 @@ void Factura::Modificar(Factura &factura ,int ID, Indice &indice)
     cout << "Se ha modificado el atributo correctamente" <<endl;
 }
 
-int Factura::getID()
+string Factura::getID()
 {
     return this->ID;
 }
 
-int Factura::getIDCliente()
+string Factura::getIDCliente()
 {
     return this->IDCliente;
 }
 
-int Factura::getIDAuto()
+string Factura::getIDAuto()
 {
     return this->IDAuto;
 }
 
-int Factura::getIDServicio()
+string Factura::getIDServicio()
 {
     return this->IDServicio;
 }
 
-void Factura::setID(int ID)
+void Factura::setID(string ID)
 {
     this->ID = ID;
 }
 
-void Factura::setIDCliente(int IDCliente) 
+void Factura::setIDCliente(string IDCliente) 
 {
     this->IDCliente = IDCliente;
 }
 
-void Factura::setIDAuto(int IDAuto)
+void Factura::setIDAuto(string IDAuto)
 {
     this->IDAuto = IDAuto;
 }
 
-void Factura::setIDServicio(int IDServicio)
+void Factura::setIDServicio(string IDServicio)
 {
     this->IDServicio = IDServicio;
 }
