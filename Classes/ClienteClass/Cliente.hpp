@@ -1,11 +1,12 @@
 #ifndef CLIENTE_HPP
 #define CLIENTE_HPP
 #include <iostream>
+#include "../../Functions/functions.hpp"
 using namespace std;
 
 class Cliente
 {
-    string ID;
+    string ID = generarID();
     string nombre;
     string apellido;
     string correo;

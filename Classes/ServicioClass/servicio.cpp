@@ -10,7 +10,7 @@ Servicio::Servicio()
 
 }
 
-Servicio::Servicio(int id, string nombre, int precio, bool disponible) 
+Servicio::Servicio(string id, string nombre, int precio, bool disponible) 
 {
     this->ID = id;
     this->nombre = nombre;
@@ -23,7 +23,7 @@ Servicio::~Servicio()
 
 }
 
-void Servicio::Crear(Servicio &servicio, Indice &indice)
+void Servicio::Crear(int contServicio ,Servicio &servicio, Indice &indice)
 {
     int temp;
     string nombre;
@@ -36,11 +36,7 @@ void Servicio::Crear(Servicio &servicio, Indice &indice)
         exit(1);
     }
 
-    cout << "Introduce el ID del servicio" <<endl;
-    cin>>temp;
-    cin.ignore();
-    servicio.setID(temp);
-
+    servicio.setID(generarID());
     cout << "Introduce el Nombre del servicio" <<endl;
     getline(cin, nombre);
     servicio.setNombre(nombre);
@@ -54,14 +50,12 @@ void Servicio::Crear(Servicio &servicio, Indice &indice)
     cin>>temp;
     servicio.setDisponible(temp);
 
-    string IDStr = to_string(servicio.getID());
-
-    int pos = (servicio.getID()-1)*sizeof(Servicio);
+    int pos = (contServicio-1)*sizeof(Servicio);
     archivoServicios.seekp(pos, ios::beg);
     archivoServicios.write(reinterpret_cast<char*>(&servicio), sizeof(Servicio));
     archivoServicios.close();
     indice.setPos(pos);
-    indice.setID(IDStr);
+    indice.setID(servicio.getID());
     archivoIndices.open("Indices.bin", ios::app | ios::binary);
     archivoIndices.write(reinterpret_cast<char*>((&indice)), sizeof(Indice));
     archivoIndices.close();
@@ -125,7 +119,7 @@ void Servicio::Mostrar(Servicio &servicio, Indice &indice)
     archivoServicios.close();
 }
 
-void Servicio::Buscar(Servicio &servicio ,int ID, Indice &indice) 
+void Servicio::Buscar(Servicio &servicio ,string ID, Indice &indice) 
 {
     ifstream archivoServicios("Servicios.bin", ios::app | ios::binary);
     ifstream  archivoIndices("Indices.bin", ios::app | ios::binary);
@@ -144,7 +138,7 @@ void Servicio::Buscar(Servicio &servicio ,int ID, Indice &indice)
         archivoIndices.read((char*)(&indice), sizeof(indice));
         if(archivoIndices.eof()) break;
 
-        if (stoi(indice.getID()) == ID)
+        if (indice.getID() == ID)
         {
             archivoServicios.seekg((stoi(indice.getID())-1)*sizeof(servicio), ios::beg);
             archivoServicios.read((char*)&servicio,sizeof(servicio));
@@ -172,7 +166,7 @@ void Servicio::Buscar(Servicio &servicio ,int ID, Indice &indice)
     archivoServicios.close();
 }
     
-void Servicio::Eliminar(Servicio &servicio ,int ID, Indice &indice)
+void Servicio::Eliminar(Servicio &servicio ,string ID, Indice &indice)
 {
     ifstream archivoServicios("Servicios.bin", ios::app | ios::binary);
     ifstream  archivoIndices("Indices.bin", ios::app | ios::binary);
@@ -194,7 +188,7 @@ void Servicio::Eliminar(Servicio &servicio ,int ID, Indice &indice)
         archivoIndices.read((char*)(&indice), sizeof(indice));
         if(archivoIndices.eof()) break;
 
-        if (stoi(indice.getID()) == ID)
+        if (indice.getID() == ID)
         {
             archivoServicios.seekg((stoi(indice.getID())-1)*sizeof(servicio), ios::beg);
             archivoServicios.read((char*)&servicio,sizeof(servicio));
@@ -225,7 +219,7 @@ void Servicio::Eliminar(Servicio &servicio ,int ID, Indice &indice)
             }
         }
 
-        if (stoi(indice.getID()) != ID)
+        if (indice.getID() != ID)
         {
             archivoServicios.seekg((stoi(indice.getID())-1)*sizeof(servicio), ios::beg);
             archivoServicios.read((char*)&servicio,sizeof(servicio));
@@ -253,7 +247,7 @@ void Servicio::Eliminar(Servicio &servicio ,int ID, Indice &indice)
     cout << "Se ha elimnado el Empleado correctamente" << endl;
 }
 
-void Servicio::Modificar(Servicio &servicio ,int ID, Indice &indice)
+void Servicio::Modificar(Servicio &servicio ,string ID, Indice &indice)
 {
     ifstream archivoServicios("Servicios.bin", ios::app | ios::binary);
     ifstream  archivoIndices("Indices.bin", ios::app | ios::binary);
@@ -276,7 +270,7 @@ void Servicio::Modificar(Servicio &servicio ,int ID, Indice &indice)
         archivoIndices.read(reinterpret_cast<char*>(&indice), sizeof(Indice));
         if(archivoIndices.eof()) break;
 
-        if (stoi(indice.getID()) == ID)
+        if (indice.getID() == ID)
         {
             archivoServicios.seekg((stoi(indice.getID())-1)*sizeof(Servicio), ios::beg);
             archivoServicios.read(reinterpret_cast<char*>(&servicio),sizeof(Servicio));
@@ -312,8 +306,8 @@ void Servicio::Modificar(Servicio &servicio ,int ID, Indice &indice)
                 {
                     cout << "Modificar ID" << endl;
                     cout << "Introduce el nuevo ID" << endl;
-                    cin>>opc;
-                    servicio.setID(opc);
+                    getline(cin, temp);
+                    servicio.setID(temp);
                     break;
                 }
 
@@ -385,7 +379,7 @@ void Servicio::Modificar(Servicio &servicio ,int ID, Indice &indice)
     cout << "Se ha modificado el atributo correctamente" <<endl;
 }
 
-int Servicio::getID()
+string Servicio::getID()
 {
     return this->ID;
 }
@@ -405,7 +399,7 @@ bool Servicio::getDisponible()
     return this->disponible;
 }
 
-void Servicio::setID(int id)
+void Servicio::setID(string id)
 {
     this->ID = id;
 }

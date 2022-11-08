@@ -31,7 +31,7 @@ Empleado::~Empleado()
 
 void Empleado::Crear(Empleado &empleado, Indice &indice)
 {
-    string ID, nombre, apellido, ciudadOrigen, estadoOrigen, colonia, calle, numeroCasa;
+    string nombre, apellido, ciudadOrigen, estadoOrigen, colonia, calle, numeroCasa;
     int CP;
 
     ofstream archivoEmpleados, archivoIndices;
@@ -41,10 +41,6 @@ void Empleado::Crear(Empleado &empleado, Indice &indice)
         cerr << "No se pudo abrir el archivo" <<endl;
         exit(1);
     }
-
-    cout << "Introduce el ID del empleado" <<endl;
-    getline(cin, ID);
-    empleado.setID(ID);
 
     cout << "Introduce el Nombre del empleado" <<endl;
     getline(cin, nombre);

@@ -2,7 +2,8 @@
 #include "Indice.hpp"
 using namespace std;
 
-Indice::Indice() {
+Indice::Indice() 
+{
 
 }
 

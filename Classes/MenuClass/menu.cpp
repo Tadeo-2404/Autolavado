@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Menu.hpp"
-#include "../AdminClass/Admin.hpp"
-#include "../AdminClass/Admin.cpp"
+#include <fstream>
+#include "../AdminClass/admin.cpp"
 using namespace std;
 
 Menu::Menu()
@@ -70,6 +70,12 @@ void Menu::MenuProducto()
             break;
         }
 
+        case 0:
+        {
+            cout << "Salir" << endl;
+            break;
+        }
+
         default:
             cout << "Error: Opcion no valida, intentalo de nuevo" << endl;
             break;
@@ -104,7 +110,7 @@ void Menu::MenuCliente()
                 cout << "3) Buscar" << endl;
                 cout << "4) Eliminar" << endl;
                 cout << "5) Modificar" << endl;
-                cout << "6) Desencryptar" <<endl;
+                cout << "6) Desencryptar" << endl;
                 cout << "0) Salir" << endl;
                 cin >> opc;
                 cin.ignore();
@@ -152,6 +158,12 @@ void Menu::MenuCliente()
                     cout << "Introduce el ID del cliente a modificar" << endl;
                     getline(cin, IDCliente);
                     admin.modificarClientesEncryptado(IDCliente);
+                    break;
+                }
+
+                case 0:
+                {
+                    cout << "Salir" << endl;
                     break;
                 }
 
@@ -224,6 +236,12 @@ void Menu::MenuCliente()
                     break;
                 }
 
+                case 0:
+                {
+                    cout << "Salir" << endl;
+                    break;
+                }
+
                 default:
                     cout << "Error: Opcion no valida, intentalo de nuevo" << endl;
                     break;
@@ -233,7 +251,7 @@ void Menu::MenuCliente()
             break;
         }
 
-        case 3:
+        case 0:
         {
             cout << "Salir" << endl;
             break;
@@ -280,7 +298,7 @@ void Menu::MenuTicket()
 
         case 3:
         {
-            int IDticket;
+            string IDticket;
             cout << "BUSCAR" << endl;
             cout << "Introduce el ID del ticket a buscar" << endl;
             cin >> IDticket;
@@ -290,7 +308,7 @@ void Menu::MenuTicket()
 
         case 4:
         {
-            int IDticket;
+            string IDticket;
             cout << "ELIMINAR" << endl;
             cout << "Introduce el ID del ticket a eliminar" << endl;
             cin >> IDticket;
@@ -300,11 +318,17 @@ void Menu::MenuTicket()
 
         case 5:
         {
-            int IDticket;
+            string IDticket;
             cout << "MODIFICAR" << endl;
             cout << "Introduce el ID del ticket a modificar" << endl;
             cin >> IDticket;
             admin.modificarTickets(IDticket);
+            break;
+        }
+
+        case 0:
+        {
+            cout << "Salir" << endl;
             break;
         }
 
@@ -380,6 +404,12 @@ void Menu::MenuEmpleado()
             break;
         }
 
+        case 0:
+        {
+            cout << "Salir" << endl;
+            break;
+        }
+
         default:
             cout << "Error: Opcion no valida, intentalo de nuevo" << endl;
             break;
@@ -422,7 +452,7 @@ void Menu::MenuServicio()
 
         case 3:
         {
-            int IDticket;
+            string IDticket;
             cout << "BUSCAR" << endl;
             admin.mostrarServicios();
             cout << "Introduce el ID del Servicio a buscar" << endl;
@@ -433,7 +463,7 @@ void Menu::MenuServicio()
 
         case 4:
         {
-            int IDticket;
+            string IDticket;
             cout << "ELIMINAR" << endl;
             admin.mostrarServicios();
             cout << "Introduce el ID del Servicio a eliminar" << endl;
@@ -444,11 +474,17 @@ void Menu::MenuServicio()
 
         case 5:
         {
-            int IDticket;
+            string IDticket;
             cout << "MODIFICAR" << endl;
             cout << "Introduce el ID del Servicio a modificar" << endl;
             cin >> IDticket;
             admin.modificarServicios(IDticket);
+            break;
+        }
+
+        case 0:
+        {
+            cout << "Salir" << endl;
             break;
         }
 
@@ -458,6 +494,154 @@ void Menu::MenuServicio()
         }
 
     } while (opc != 0);
+}
+
+void Menu::MenuFactura()
+{
+    Admin admin;
+    int opc;
+
+    do
+    {
+        cout << "Menu - Factura" <<endl;
+        cout << "1) Compresion y Descompresion" <<endl;
+        cout << "2) Serializacion" <<endl;
+        cout << "0) Salir" <<endl;
+        cin>>opc;
+        cin.ignore();
+
+        switch (opc)
+        {
+        case 1:
+        {
+            cout << "Compresion y Descompresion" <<endl;
+            do
+            {
+                cout << "1) Comprimir" <<endl;
+                cout << "2) Descomprimir" <<endl;
+                cout << "0) Salir" <<endl;
+                cin>>opc;
+
+                switch (opc)
+                {
+                case 1:
+                {
+                    cout << "Comprimir" <<endl;
+                    admin.comprimirFacturas();
+                    break;
+                }
+
+                case 2:
+                {
+                    cout << "Descomprimir" <<endl;
+                    admin.descomprimirFactura();
+                    break;
+                }
+
+                case 3:
+                {
+                    cout << "Salir" <<endl;
+                    break;
+                }
+                
+                default: cout << "Error: Opcion no valida" <<endl;
+                    break;
+                }
+            } while (opc != 0);
+            
+            break;
+        }
+
+        case 2:
+        {
+            cout << "Serializacion" << endl;
+            do
+            {
+                cout << "Facturas" << endl;
+                cout << "1) Crear" << endl;
+                cout << "2) Mostrar" << endl;
+                cout << "3) Buscar" << endl;
+                cout << "4) Eliminar" << endl;
+                cout << "5) Modificar" << endl;
+                cout << "0) Salir" << endl;
+                cin >> opc;
+                cin.ignore();
+
+                switch (opc)
+                {
+                case 1:
+                {
+                    cout << "CREAR" << endl;
+                    admin.crearFactura();
+                    break;
+                }
+
+                case 2:
+                {
+                    cout << "MOSTRAR" << endl;
+                    admin.mostrarFacturas();
+                    break;
+                }
+
+                case 3:
+                {
+                    string IDticket;
+                    cout << "BUSCAR" << endl;
+                    admin.mostrarFacturas();
+                    cout << "Introduce el ID de la Factura a buscar" << endl;
+                    cin >> IDticket;
+                    admin.buscarFactura(IDticket);
+                    break;
+                }
+
+                case 4:
+                {
+                    string IDticket;
+                    cout << "ELIMINAR" << endl;
+                    admin.mostrarFacturas();
+                    cout << "Introduce el ID de la Factura a eliminar" << endl;
+                    cin >> IDticket;
+                    admin.eliminarFacturas(IDticket);
+                    break;
+                }
+
+                case 5:
+                {
+                    string IDticket;
+                    cout << "MODIFICAR" << endl;
+                    cout << "Introduce el ID de la Factura a modificar" << endl;
+                    cin >> IDticket;
+                    admin.modificarFactura(IDticket);
+                    break;
+                }
+
+                case 0:
+                {
+                    cout << "Salir" << endl;
+                    break;
+                }
+
+                default:
+                    cout << "Error: Opcion no valida, intentalo de nuevo" << endl;
+                    break;
+                }
+
+            } while (opc != 0);
+            break;
+        }
+
+        case 0:
+        {
+            cout << "Salir" <<endl;
+            break;
+        }
+
+        default: cout << "Error: Opcion no valida" <<endl;
+            break;
+        }
+
+    } while (opc != 0);
+    
 }
 
 void Menu::MenuPromociones()
@@ -545,6 +729,12 @@ void Menu::MenuPromociones()
                     break;
                 }
 
+                case 0:
+                {
+                    cout << "Salir" << endl;
+                    break;
+                }
+
                 default:
                     cout << "Error: Opcion no valida, intentalo de nuevo" << endl;
                     break;
@@ -617,6 +807,12 @@ void Menu::MenuPromociones()
                     getline(cin, IDPromocion);
                     admin.modificarPromocionesColision(IDPromocion);
                     cout << "Se ha modificado correctamente" << endl;
+                    break;
+                }
+
+                case 0:
+                {
+                    cout << "Salir" << endl;
                     break;
                 }
 

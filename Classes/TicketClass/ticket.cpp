@@ -10,7 +10,7 @@ Ticket::Ticket()
 }
 
 
-Ticket::Ticket(int ID,string IDAuto, string IDCliente, string IDServicio) 
+Ticket::Ticket(string ID,string IDAuto, string IDCliente, string IDServicio) 
 {
     this->ID = ID;
     this->IDAuto = IDAuto;
@@ -18,7 +18,7 @@ Ticket::Ticket(int ID,string IDAuto, string IDCliente, string IDServicio)
     this->IDServicio = IDServicio;
 }
 
-void Ticket::Crear(Ticket &ticket, int ID)
+void Ticket::Crear(Ticket &ticket)
 {
     ofstream archivoTickets("Tickets.txt", ios::app);
     string IDAuto, IDCliente, IDServicio;
@@ -78,7 +78,7 @@ void Ticket::Mostrar(Ticket &ticket)
     archivo.close();
 }
 
-void Ticket::Buscar(Ticket &ticket ,int ticketBuscado)
+void Ticket::Buscar(Ticket &ticket , string ticketBuscado)
 {
     ifstream archivo("Tickets.txt");
     int cont = 0;
@@ -120,13 +120,13 @@ void Ticket::Buscar(Ticket &ticket ,int ticketBuscado)
     archivo.close();
 }
 
-void Ticket::Modificar(Ticket &ticket, int ticketBuscado)
+void Ticket::Modificar(Ticket &ticket, string ticketBuscado)
 {
     ifstream archivo("Tickets.txt");
     ofstream archivoTemporal("TicketsTemp.txt", ios::app);
     int cont = 0;
     int opc;
-    string IDAuto, IDCliente, IDServicio;
+    string temp;
 
     if (archivo.fail())
     {
@@ -155,35 +155,58 @@ void Ticket::Modificar(Ticket &ticket, int ticketBuscado)
             cout << setw(10) << ticket.getIDCliente();
             cout << setw(10) << ticket.getIDServicio() << endl;
             cout << "------------------------" << endl;
-            cout << "1) IDAuto" << endl;
-            cout << "2) IDCliente" << endl;
-            cout << "3) IDServicio" << endl;
+            cout << "1) ID" <<endl;
+            cout << "2) IDAuto" << endl;
+            cout << "3) IDCliente" << endl;
+            cout << "4) IDServicio" << endl;
+            cout << "0) Salir" <<endl;
             cout << "Selecciona el atributo que deseas modificar" << endl;
             cin >> opc;
             cin.ignore();
 
             switch (opc)
             {
-            case 1:
-                cout << "IDAuto" << endl;
-                cout << "Introduce el nuevo ID del Auto" << endl;
-                getline(cin, IDAuto);
-                ticket.setIDAuto(IDAuto);
-                break;
+                case 1:
+                {
+                    cout << "ID" <<endl;
+                    cout << "Introduce el nuevo ID" <<endl;
+                    getline(cin, temp);
+                    ticket.setID(temp);
+                    break;
+                }
 
             case 2:
-                cout << "IDCliente" << endl;
-                cout << "Introduce el nuevo ID del Cliente" << endl;
-                getline(cin, IDCliente);
-                ticket.setIDCliente(IDCliente);
+            {
+                cout << "IDAuto" << endl;
+                cout << "Introduce el nuevo ID del Auto" << endl;
+                getline(cin, temp);
+                ticket.setIDAuto(temp);
                 break;
+            }
 
             case 3:
+            {
+                cout << "IDCliente" << endl;
+                cout << "Introduce el nuevo ID del Cliente" << endl;
+                getline(cin, temp);
+                ticket.setIDCliente(temp);
+                break;
+            }
+
+            case 4:
+            {
                 cout << "IDServicio" << endl;
                 cout << "Introduce el nuevo ID del Servicio" << endl;
-                getline(cin, IDServicio);
-                ticket.setIDServicio(IDServicio);
+                getline(cin, temp);
+                ticket.setIDServicio(temp);
                 break;
+            }
+
+            case 0:
+            {
+                cout << "Salir" <<endl;
+                break;
+            }
 
             default:
                 cout << "Error: opcion invalida" << endl;
@@ -206,13 +229,12 @@ void Ticket::Modificar(Ticket &ticket, int ticketBuscado)
     cout << "Se ha actualizado la informacion" << endl;
 }
 
-void Ticket::Eliminar(Ticket &ticket ,int ticketBuscado)
+void Ticket::Eliminar(Ticket &ticket ,string ticketBuscado)
 {
     ifstream archivo("Tickets.txt");
     ofstream archivoTemporal("TicketsTemp.txt", ios::app);
     int cont = 0;
     int opc;
-    string IDAuto, IDCliente, IDServicio;
 
     if (archivo.fail())
     {
@@ -286,7 +308,7 @@ void Ticket::Eliminar(Ticket &ticket ,int ticketBuscado)
     cout << "Se ha actualizado la informacion" << endl;
 }
 
-int Ticket::getID() 
+string Ticket::getID() 
 {
     return this->ID;
 }
@@ -306,7 +328,7 @@ string Ticket::getIDServicio()
     return this->IDServicio;
 }
 
-void Ticket::setID(int ID)
+void Ticket::setID(string ID)
 {
     this->ID = ID;
 }

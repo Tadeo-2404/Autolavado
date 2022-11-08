@@ -10,12 +10,12 @@ int main()
     do
     {
         cout << "AUTOLAVADO" << endl;
-        cout << "1) Producto" << endl;
-        cout << "2) Cliente" << endl;
-        cout << "3) Ticket" << endl;
-        cout << "4) Empleado" << endl;
-        cout << "5) Servicio" << endl;
-        cout << "6) Promocion" <<endl;
+        cout << "1) Registrar Cliente" << endl;
+        cout << "2) Registrar Ticket" << endl;
+        cout << "3) Registrar Factura" << endl;
+        cout << "4) Registrar Empleado" << endl;
+        cout << "5) Registrar Servicio" << endl;
+        cout << "6) Registrar Promocion" <<endl;
         cout << "0) Salir" <<endl;
         cin>>opc;
         cin.ignore();
@@ -24,22 +24,22 @@ int main()
         {
         case 1:
         {
-            cout << "Producto" << endl;
-            menu.MenuProducto();
-            break;
-        }
-
-        case 2:
-        {
             cout << "Cliente" << endl;
             menu.MenuCliente();
             break;
         }
 
-        case 3:
+        case 2:
         {
             cout << "Ticket" << endl;
             menu.MenuTicket();
+            break;
+        }
+
+        case 3:
+        {
+            cout << "Factura" << endl;
+            menu.MenuFactura();
             break;
         }
 
@@ -66,6 +66,7 @@ int main()
 
         case 0:
         {
+            cout << "Salir" <<endl;
             break;
         }
 

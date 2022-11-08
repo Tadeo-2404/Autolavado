@@ -52,9 +52,7 @@ void Cliente::CrearEncriptacion()
 
     string ID, nombre, apellido, correo, numeroCelular, IDVehiculo;
     cout << "Bienvenido a crear Cliente Encryptado" << endl;
-    cout << "Ingrese el ID del Cliente" << endl;
-    getline(cin, ID);
-    ID = Encryptar(ID);
+    ID = Encryptar(this->ID);
     cout << "ID: " << ID << endl;
 
     cout << "Ingresa el Nombre del Cliente" << endl;
@@ -597,9 +595,8 @@ void Cliente::Crear()
     }
 
     string ID, nombre, apellido, correo, numeroCelular, IDVehiculo;
+    ID = this->ID;
     cout << "Bienvenido a crear Cliente" << endl;
-    cout << "Ingrese el ID del Cliente" << endl;
-    getline(cin, ID);
 
     cout << "Ingresa el Nombre del Cliente" << endl;
     getline(cin, nombre);
