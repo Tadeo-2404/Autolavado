@@ -2,6 +2,7 @@
 #define FUNCTIONS_HPP
 using namespace std;
 #include <string>
+#include <iomanip>
 #include "time.h"
 
 string generarID()
@@ -22,53 +23,5 @@ string generarID()
     return result;
 };
  
-bool ClienteExiste(string ID)
-{
-    bool flag = false;
-    cout << ID;
-    return flag;
-}
-
-bool AutoExiste(string ID)
-{
-    bool flag = false;
-    cout << ID;
-    return flag;
-}
-
-bool ServicioExiste(string ID)
-{
-    bool flag = false;
-    cout << ID;
-    return flag;
-}
-
-bool TicketExiste(string ID)
-{
-    bool flag = false;
-    cout << ID;
-    return flag;
-}
-
-bool FacturaExiste(string ID)
-{
-    bool flag = false;
-    cout << ID;
-    return flag;
-}
-
-bool PromocionExiste(string ID)
-{
-    bool flag = false;
-    cout << ID;
-    return flag;
-}
-
-bool EmpleadoExiste(string ID)
-{
-    bool flag = false;
-    cout << ID;
-    return flag;
-}
 
 #endif
